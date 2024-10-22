@@ -25,7 +25,7 @@ const addLocalStorage = (item) => {
 function BasketComp({ children }) {
   const [theme, setTheme] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [drawerClose, setDrawerClose] = useState(false);
+  
   
 
 
@@ -109,8 +109,7 @@ function BasketComp({ children }) {
         setTheme,
         theme,
         addLocalStorage,
-        setDrawerClose,
-        drawerClose
+       
       }}
     >
       {children}

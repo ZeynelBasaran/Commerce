@@ -19,7 +19,7 @@ export default function Basket() {
     
 
   return (
-    <TableContainer component={Paper} className="basketpage">
+    <TableContainer component={Paper} className="container basketpage">
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>

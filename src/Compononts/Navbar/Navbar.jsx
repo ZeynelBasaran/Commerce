@@ -57,11 +57,11 @@ function Navbar() {
 
         <div className="flex justify-between container">
           <ul className="flex gap-x-2 items-center py-2">
-            
+
             <li>
-             
+
               <Link to={"/"} className="cursor">
-              <img src={Logo} alt="" width={80}/>
+                <img src={Logo} alt="" width={80} />
               </Link>
             </li>
             <li>
@@ -71,7 +71,12 @@ function Navbar() {
             </li>
             <li>
               <Link to={"/register"} className="cursor">
-                Register
+                Kayıt Ol
+              </Link>
+            </li>
+            <li>
+              <Link to={"/user"} className="cursor">
+                Giriş Yap
               </Link>
             </li>
           </ul>

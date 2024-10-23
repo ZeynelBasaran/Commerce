@@ -8,6 +8,7 @@ import Degişimİade from "../src/Compononts/Navbar/degisim-iade";
 import Guvenliİade from "../src/Compononts/Navbar/guvenli-alisveris";
 import HizliGönderi from "../src/Compononts/Navbar/hizli-gonderim";
 import MusteriMemnuniyeti from "../src/Compononts/Navbar/musteri-memnuniyeti";
+import User from "./Pages/User";
 
 
 function App() {
@@ -15,16 +16,18 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Product />}></Route>
+        {/* Top Banner  */}
         <Route path="/hizli-gonderim" element={<HizliGönderi />}></Route>
         <Route path="/guvenli-alisveris" element={<Guvenliİade />}></Route>
         <Route path="/musteri-memnuniyeti" element={<MusteriMemnuniyeti />}></Route>
         <Route path="/degisim-iade" element={<Degişimİade />}></Route>
-
+        
+        {/* Pages */}
+        <Route path="/" element={<Product />}></Route>
         <Route path="/basket" element={<Basket />}></Route>
         <Route path="/product/:id" element={<ProductPage />}></Route>
         <Route path="/register" element={<Register />}></Route>
-
+        <Route path="/user" element={<User />}></Route>
 
       </Routes>
     </>

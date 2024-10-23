@@ -13,11 +13,20 @@
     background-color: #D5D5D5;
 
 }
-.register form div input{
+.register-inp{
     background-color: #FFFFFF;
     display: block;
     width: 100%;
     padding: 5px;
     outline: 0;
     border: none;
+    border-bottom: 3px solid #B6A58F;
+}
+.register-inp:focus{
+    border-bottom: 3px solid steelblue;
+}
+.register-error{
+    margin-top: 4px;
+    font-size: 0.9rem;
+    color: red;
 }

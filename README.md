@@ -8,6 +8,9 @@ E-Ticaret web sitesi
 - **CSS**: Web uygulamasının stilini oluşturmak için kullanılır.
 - **Tailwind**: Web uygulamasının stilini oluşturmak için kullanılır.
 - **Netlify**: Uygulamanın dağıtımı için kullanılan hosting platformu.
+- **React Router**: Uygulama içinde farklı sayfalar arasında gezinmeyi sağlayan bir kütüphane. Sayfa yönlendirmeleri için kullanılır.
+- **Axios**: API isteklerini kolayca yönetmek için kullanılan bir kütüphane. Ticaret projelerinde sıkça API'den veri çekmek ve sunmak için kullanılır.
+- **MUI (Material-UI)**: Kullanıcı arayüzü oluşturmayı hızlandıran, React ile uyumlu bir komponent kütüphanesidir.
 
 ## Başlangıç
 

@@ -1,53 +1,75 @@
 import React from 'react'
 import { useFormik } from 'formik';
 import "../Pages/pages.css"
+import { RegisterForm } from '../Schemas/RegisterForm';
 
 function Register() {
-    const { values, handleChange, handleSubmit, errors, } = useFormik({
+    const submit = (values, action) => {
+        console.log(values)
+        console.log(action)
+        setTimeout(() => { action.resetForm() }, 300)
+
+    }
+
+    const { values, handleChange, handleSubmit, errors, handleBlur, touched } = useFormik({
         initialValues: {
-            name: "",
+            firstname: "",
             surname: "",
             mail: "",
             password: "",
-            confirmpassword: ""
+            confirmpassword: "",
+            term: "",
         },
+        validationSchema: RegisterForm,
+        onSubmit: submit
     })
 
 
+
     return (
-        <section className='container register'>
-            <form action="">
+        <section className='container register p-6'>
+            <form action="" onSubmit={handleSubmit}>
                 <h5>Kayıt Ol</h5>
 
-                <div className='flex my-1'>
-                    <div>
+                <div className='flex my-1 gap-x-6'>
+                    <div className='w-full'>
                         <label>Adınız</label>
-                        <input type="text" placeholder='Adınız' id='firstname' name="firstname" value={values.name} onChange={handleChange} />
+                        <input type="text"
+                            className='register-inp' placeholder='Adınız' id='firstname' value={values.firstname} onChange={handleChange} />
+                        {touched.firstname && errors.firstname && <p className='register-error'>{errors.firstname}</p>}
+
                     </div>
-                    <div>
+                    <div className='w-full'>
                         <label>Soyadınız</label>
-                        <input type="text" placeholder='Soyadınız' id='surname' name='surname' value={values.surname} onChange={handleChange} />
+                        <input type="text"
+                            className='register-inp' placeholder='Soyadınız' id='surname' value={values.surname} onChange={handleChange} />
+                        {touched.surname && errors.surname && <p className='register-error'>{errors.surname}</p>}
                     </div>
-
-
-
                 </div>
 
-                <div className='my-1'>
+                <div className='my-4'>
                     <label>Mail</label>
-                    <input type="mail" placeholder='Lütfen mail giriniz...' id='mail' name='mail' value={values.mail} onChange={handleChange} />
+                    <input type="mail" className='register-inp' placeholder='Lütfen mail giriniz...' id='mail' value={values.mail} onChange={handleChange} />
+                    {touched.mail && errors.mail && <p className='register-error'>{errors.mail}</p>}
                 </div>
-                <div className='my-1'>
+                <div className='my-4'>
                     <label>Şifre</label>
-                    <input type="password" placeholder='Şifrenizi girin.' id='password' name='pass' value={values.pass} onChange={handleChange} />
+                    <input type="password" className='register-inp' placeholder='Şifrenizi girin.' id='password' value={values.password} onChange={handleChange} />
+                    {touched.password && errors.password && <p className='register-error'>{errors.password}</p>}
                 </div>
-                <div className='my-1'>
+                <div className='my-4'>
                     <label>Şifre</label>
-                    <input type="password" placeholder='Şifrenizi girin tekrar giriniz.' id='confirmpassword' name='pass' value={values.pass} onChange={handleChange} />
+                    <input type="password" className='register-inp' placeholder='Şifrenizi girin tekrar giriniz.' id='confirmpassword' value={values.confirmpassword} onChange={handleChange} />
+                    {touched.confirmpassword && errors.confirmpassword && <p className='register-error'>{errors.confirmpassword}</p>}
                 </div>
+                <div className='my-4'>
+                    <input type="checkbox" className='w-6' id='term' name='term' value={values.term} onChange={handleChange} />
+                    <label>Kullanıcı sözleşmesini kabul ediyorum.</label>
+                </div>
+                {touched.term && errors.term && <p className='register-error'>{errors.term}</p>}
 
-                <div className='my-1'>
-                    <button>Kayıt Ol</button>
+                <div className='my-4'>
+                    <button type='submit' >Kayıt Ol</button>
                 </div>
 
             </form>

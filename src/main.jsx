@@ -2,14 +2,15 @@ import { BrowserRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import BasketComp from "./ContextApi/ContextPage.jsx";
+import ContextComp from "./ContextApi/ContextPage.jsx";
+
 
 
 
 createRoot(document.getElementById("root")).render(
-  <BasketComp>
+  <ContextComp>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </BasketComp>
+  </ContextComp>
 );

@@ -1,45 +1,44 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import ProductCard from "../Compononts/ProductsCard";
-import axios from "axios";
 import { ContextPage } from "../ContextApi/ContextPage";
-import Alert from "../Compononts/Alert";
 import Loading from "../Compononts/Loading"
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../Firebase";
 
 
 
 
 function Products() {
-  const { products, getData, loading, alerts, basket } = useContext(ContextPage);
+  const { products, getData, loading, basket,setUserInfo,userInfo,userActive } = useContext(ContextPage);
+  
+  const getUserİnfo = () => {
+    onAuthStateChanged(auth,(userCredential)=>{
+      if(userCredential){
+        console.log(userCredential)
+        setUserInfo(userCredential)   
+      }
+    })
+  }
 
   useEffect(() => {
     getData()
-  /*
-    const timer = setTimeout(() => {
-      setLoading(false)
-      setAlerts({
-        type: "",
-        message: "",
-      });
-
-    }, 3000);
-    return () => clearTimeout(timer);
-*/
+    getUserİnfo()
   }, [basket]);
 
-  if(loading){
-   return <Loading />
+  if (loading) {
+    return <Loading />
   }
   return (
     <>
-    
-     <div className="container flex flex-wrap justify-between gap-2">
-      
-      {products?.map((product, index) => (
-        <ProductCard key={`${index}pro`} product={product}/>
-      ))}
-    </div>
+       {userActive && <h1>Hoşgeldiniz sayın {userInfo.displayName}</h1>}
+      <div className="container flex flex-wrap justify-between gap-2">
+
+        {products?.map((product, index) => ( 
+          <ProductCard key={`${index}pro`} product={product} />
+        ))}
+      </div>
     </>
-   
+
   );
 }
 

@@ -1,6 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
 
+console.log(`${import.meta.env.VITE_APP_BASE_URL}`)
+
+
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCpAcysBc8WK9qC05sZh7KmcjeXZe3OHOw",

@@ -17,31 +17,39 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div className="flex-col">
+<div className="flex flex-col justify-center shadow-lg">
       <div
-        className="cursor-pointer shadow-lg"
         onClick={() => navigate("product/" + id)}
-        style={{ width: "200px", height: "400px" }}
+        style={{ maxWidth: "200px", maxHeight: "250px" }}
       >
-        <div style={{ width: "150px", height: "250px" }}>
-          <img
-            src={images[0]}
-            alt={title}
-            style={{ width: "100%", height: "300px" }}
-            className="object-contain"
-          />
-          <h6> {title} </h6>
-          <Rating rating={rating} />
-          <p>{price} ₺</p>
-        </div>
+        <img
+          src={images[0]}
+          alt={title}
+          style={{ width: "100%", height: "100%" }}
+          className="object-contain"
+        />
       </div>
-      <button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg" onClick={handleClick}>
-        Sepete Ekle
-      </button>
-    </div>
 
+      <div onClick={() => navigate("product/" + id)}>
+        <Rating rating={rating} />
+        <h6> {title} </h6>
+        <p>{price} $ </p>
+      </div>
 
-
+      <div className="flex justify-center">
+        <button className="btn1 rounded-lg w-50" onClick={handleClick}>
+          Sepete Ekle
+        </button>
+      </div>
+    </div >
+    
 
   )
 }
+
+
+
+/*
+
+
+*/

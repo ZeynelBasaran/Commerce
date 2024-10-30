@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Badge from "../Badge";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useContext } from "react";
@@ -10,13 +10,16 @@ import useToggle from "../../Hooks/useToggle";
 import Banner from "./TopBanner";
 import Logo from "/Public/1.webp"
 import "../components.css"
-
+import { signOut } from "firebase/auth";
+import { auth } from "../../Firebase";
 
 
 
 function Navbar() {
-  const { theme, setTheme, basket, addToBasket, removeFromBasket } =
+  const { theme, setTheme, basket, addToBasket, removeFromBasket, setUserActive, userActive,setUserInfo } =
     useContext(ContextPage);
+
+  const navigate = useNavigate()
 
   const { open, changeFunc } = useToggle()
   const [toplamTutar, setToplamTutar] = useState(0);
@@ -50,6 +53,14 @@ function Navbar() {
     setToplamTutar(toplam)
   }
 
+  const logOut = async () => {
+    await signOut(auth)
+    setUserActive(false)
+    setUserInfo([])
+    navigate("/login")
+
+  }
+
   return (
     <>
       <nav className="flex-row">
@@ -70,15 +81,23 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to={"/register"} className="cursor">
-                Kayıt Ol
+              <Link to={"/signup"} className="cursor">
+                Kayıt ol
               </Link>
             </li>
             <li>
-              <Link to={"/user"} className="cursor">
-                Giriş Yap
+              <Link to={"/login"} className="cursor">
+                Giriş yap
               </Link>
             </li>
+            {userActive && <li>
+              <Link to={"/info"} className="cursor">
+                Bilgileri Güncelle
+              </Link>
+            </li>}
+            {userActive && <li className="cursor-pointer" onClick={logOut}>
+              Çıkış Yap
+            </li>}
           </ul>
 
           <ul className="flex items-center">

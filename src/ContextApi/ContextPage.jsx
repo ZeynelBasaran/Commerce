@@ -21,14 +21,18 @@ const addLocalStorage = (item) => {
 
 
 
+function ContextComp({ children }) {
 
-function BasketComp({ children }) {
+  //console.log(`${import.meta.env.VITE_APP_BASE_URL}`)
+
+
   const [theme, setTheme] = useState(false);
   const [loading, setLoading] = useState(true);
-  
-  
 
-
+  const [userActive, setUserActive] = useState(false)
+  const [userInfo, setUserInfo] = useState([])
+ 
+  console.log(userInfo)
   const [alerts, setAlerts] = useState({
     type: "success",
     message: "Yükleniyor...",
@@ -59,8 +63,8 @@ function BasketComp({ children }) {
       //[...basket, { ...product, adet: 1 }]
       addLocalStorage([...basket, { ...product, adet: 1 }]);
     }
-    
-    
+
+
   };
 
   //Fonksiyon ile sepette ürün silmek.Seçtigimiz itemı basket içinde bulup ilgili eleman map ile manipüle edilir. Adet 0'dan küçükse filtre edilir.
@@ -91,7 +95,8 @@ function BasketComp({ children }) {
   };
 
 
-  
+  console.log(basket)
+
 
   return (
     //Value ile metodlar ve veriler gönderilmekte
@@ -109,7 +114,8 @@ function BasketComp({ children }) {
         setTheme,
         theme,
         addLocalStorage,
-       
+        userActive,
+        setUserActive, userInfo, setUserInfo
       }}
     >
       {children}
@@ -117,5 +123,5 @@ function BasketComp({ children }) {
   );
 }
 
-export default BasketComp; //Provider Compo exportu
+export default ContextComp; //Provider Compo exportu
 export { ContextPage }; //ContextExportu

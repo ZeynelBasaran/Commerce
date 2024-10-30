@@ -3,12 +3,17 @@ import Navbar from "./Compononts/Navbar/Navbar";
 import Basket from "./Pages/Basket";
 import Product from "./Pages/Home";
 import ProductPage from "./Pages/ProductPage";
-import Register from "./Pages/Register";
 import Degişimİade from "../src/Compononts/Navbar/degisim-iade";
 import Guvenliİade from "../src/Compononts/Navbar/guvenli-alisveris";
 import HizliGönderi from "../src/Compononts/Navbar/hizli-gonderim";
 import MusteriMemnuniyeti from "../src/Compononts/Navbar/musteri-memnuniyeti";
-import User from "./Pages/User";
+import SingUp from "./Pages/SignUp"
+import İnfo from "./Pages/İnfo"
+import Login from "./Pages/Login"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 function App() {
@@ -21,15 +26,31 @@ function App() {
         <Route path="/guvenli-alisveris" element={<Guvenliİade />}></Route>
         <Route path="/musteri-memnuniyeti" element={<MusteriMemnuniyeti />}></Route>
         <Route path="/degisim-iade" element={<Degişimİade />}></Route>
-        
+
         {/* Pages */}
         <Route path="/" element={<Product />}></Route>
         <Route path="/basket" element={<Basket />}></Route>
         <Route path="/product/:id" element={<ProductPage />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/user" element={<User />}></Route>
-
+        <Route path="/info" element={<İnfo />}></Route>
+        <Route path="/signup" element={<SingUp />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        
       </Routes>
+      <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition:Bounce
+        />
+
+        <ToastContainer />
     </>
   );
 }

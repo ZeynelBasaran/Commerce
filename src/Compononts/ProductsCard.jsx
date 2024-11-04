@@ -8,7 +8,7 @@ import Rating from "./Rating";
 export default function ProductCard({ product }) {
   const { addToBasket } = useContext(ContextPage);
 
-  const { id, title, images, description, price, rating } = product;
+  const { id, title, images, price, rating,reviews } = product;
 
   const navigate = useNavigate();
 
@@ -17,39 +17,38 @@ export default function ProductCard({ product }) {
   };
 
   return (
-<div className="flex flex-col justify-center shadow-lg">
-      <div
-        onClick={() => navigate("product/" + id)}
-        style={{ maxWidth: "200px", maxHeight: "250px" }}
-      >
-        <img
-          src={images[0]}
-          alt={title}
-          style={{ width: "100%", height: "100%" }}
-          className="object-contain"
-        />
+    <div style={{width:"250px",height: "350px" }} className=" bg-white border border-gray-200 rounded-lg hover:shadow-xl">
+      <div className="" style={{width:"100%",height:"200px"}}>
+        <a onClick={() => navigate("product/" + id)} className="cursor-pointer">
+          <img style={{width:"100%",height:"100%"}} className="p-8 " src={images[0]} alt={title} />
+        </a>
       </div>
 
-      <div onClick={() => navigate("product/" + id)}>
-        <Rating rating={rating} />
-        <h6> {title} </h6>
-        <p>{price} $ </p>
+      <div className="px-5 pb-5" style={{width:"100%", height: "150px" }}>
+        <a onClick={() => navigate("product/" + id)} className="cursor-pointer">
+          <h5 style={{height:"40px"}} className="text-sm font-semibold tracking-tight text-gray-900 ">{title.substring(0, 30)}</h5>
+        </a>
+        <div className="flex items-center mt-2.5 mb-5">
+          <div className="flex items-center space-x-1 rtl:space-x-reverse">
+            <Rating rating={rating} reviews={reviews}/>
+          </div>
+          <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">{rating}</span>
+        </div>
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-bold text-gray-900 ">{price} $</span>
+          <button onClick={handleClick} className="cursor-pointer text-white bg-yellow-600 hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-600 ">Sepete Ekle</button>
+        </div>
       </div>
-
-      <div className="flex justify-center">
-        <button className="btn1 rounded-lg w-50" onClick={handleClick}>
-          Sepete Ekle
-        </button>
-      </div>
-    </div >
-    
+    </div>
 
   )
 }
 
 
 
-/*
 
 
-*/
+
+
+
+

@@ -5,8 +5,6 @@ import { RegisterForm } from '../Schemas/RegisterForm';
 
 function Register() {
     const submit = (values, action) => {
-        console.log(values)
-        console.log(action)
         setTimeout(() => { action.resetForm() }, 300)
 
     }
@@ -18,7 +16,7 @@ function Register() {
             mail: "",
             password: "",
             confirmpassword: "",
-            term: "",
+            term: false,
         },
         validationSchema: RegisterForm,
         onSubmit: submit
@@ -63,7 +61,7 @@ function Register() {
                     {touched.confirmpassword && errors.confirmpassword && <p className='register-error'>{errors.confirmpassword}</p>}
                 </div>
                 <div className='my-4'>
-                    <input type="checkbox" className='w-6' id='term' name='term' value={values.term} onChange={handleChange} />
+                    <input type="checkbox" className='w-6' id='term' name='term' checked={values.term} onChange={handleChange} />
                     <label>Kullanıcı sözleşmesini kabul ediyorum.</label>
                 </div>
                 {touched.term && errors.term && <p className='register-error'>{errors.term}</p>}

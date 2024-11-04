@@ -15,8 +15,6 @@ import { toast } from 'react-toastify';
 function User() {
 
     const registerUser = async (values, action) => {
-        console.log(values)
-        console.log(action)
         try {
             const response = await createUserWithEmailAndPassword(auth, values.mail, values.password)
             const user = response.user

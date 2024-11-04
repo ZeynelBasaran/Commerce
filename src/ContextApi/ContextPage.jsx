@@ -1,6 +1,8 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import React from "react";
+import { toast } from "react-toastify";
+
 
 const ContextPage = createContext();
 
@@ -18,10 +20,8 @@ const addLocalStorage = (item) => {
 };
 
 
-
-
-
 function ContextComp({ children }) {
+
 
   //console.log(`${import.meta.env.VITE_APP_BASE_URL}`)
 
@@ -31,15 +31,11 @@ function ContextComp({ children }) {
 
   const [userActive, setUserActive] = useState(false)
   const [userInfo, setUserInfo] = useState([])
- 
-  console.log(userInfo)
-  const [alerts, setAlerts] = useState({
-    type: "success",
-    message: "Yükleniyor...",
-  });
 
   const [basket, setBasket] = useState(getLS());
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+
 
   //Fonksiyon ile sepete eleman ekleme
   const addToBasket = (product) => {
@@ -56,15 +52,13 @@ function ContextComp({ children }) {
           : item;
       });
       setBasket(newArr);
-      //setAlerts({ type: "success", message: "Ürün Eklendi" })
       addLocalStorage(newArr);
     } else {
       setBasket((prev) => [...prev, { ...product, adet: 1 }]);
       //[...basket, { ...product, adet: 1 }]
       addLocalStorage([...basket, { ...product, adet: 1 }]);
     }
-
-
+    toast("Ürün Sepete Eklendi.")
   };
 
   //Fonksiyon ile sepette ürün silmek.Seçtigimiz itemı basket içinde bulup ilgili eleman map ile manipüle edilir. Adet 0'dan küçükse filtre edilir.
@@ -76,46 +70,28 @@ function ContextComp({ children }) {
       .filter((item) => item.adet > 0);
     setBasket(removeItem);
     addLocalStorage(removeItem);
+    toast("Ürün Sepetten kaldırıldı.")
   };
 
-  /*Slice ile item silme yapabilirdik. Direkt filter ile eşit olmayını yakalayıp yeni listeden çıkardık.
-  setBasket((prev) => prev.filter((item) => item.id !== product.id));
-  */
-  const getData = async () => {
-    await axios
-      .get("https://dummyjson.com/products")
-      .then((res) => {
-        setProducts(res.data.products);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(true);
-        //setAlerts({ type: "error", message: "Fetching Hatası" })
-      });
-  };
-
-
-  console.log(basket)
-
+  console.log(products)
 
   return (
-    //Value ile metodlar ve veriler gönderilmekte
+
     <ContextPage.Provider
       value={{
         basket,
         addToBasket,
         removeFromBasket,
-        getData,
         products,
         loading,
-        setLoading,
-        alerts,
+        
         setLoading,
         setTheme,
         theme,
         addLocalStorage,
         userActive,
-        setUserActive, userInfo, setUserInfo
+        setUserActive, userInfo, setUserInfo, setProducts, setCategories, categories
+
       }}
     >
       {children}
@@ -125,3 +101,5 @@ function ContextComp({ children }) {
 
 export default ContextComp; //Provider Compo exportu
 export { ContextPage }; //ContextExportu
+
+

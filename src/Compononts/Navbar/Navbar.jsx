@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import Badge from "../Badge";
 import { Link, useNavigate } from "react-router-dom";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import { useContext } from "react";
-import { ContextPage } from "../../ContextApi/ContextPage";
 import Drawer from "@mui/material/Drawer";
 import useToggle from "../../Hooks/useToggle";
 import Banner from "./TopBanner";
@@ -12,11 +10,13 @@ import Logo from "/Public/1.webp"
 import "../components.css"
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
+import Searchbar from "./Searchbar";
+import { ContextPage } from "../../ContextApi/ContextPage";
 
 
 
 function Navbar() {
-  const { theme, setTheme, basket, addToBasket, removeFromBasket, setUserActive, userActive,setUserInfo } =
+  const { theme, setTheme, basket, addToBasket, removeFromBasket, setUserActive, userActive, setUserInfo } =
     useContext(ContextPage);
 
   const navigate = useNavigate()
@@ -100,7 +100,10 @@ function Navbar() {
             </li>}
           </ul>
 
-          <ul className="flex items-center">
+          <ul className="flex items-center gap-x-4">
+            <li className="">
+              <Searchbar />
+            </li>
             <li>
               {theme ? (
                 <DarkModeIcon className="cursor-pointer" onClick={changeTheme} />

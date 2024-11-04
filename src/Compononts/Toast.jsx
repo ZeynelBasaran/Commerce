@@ -13,7 +13,7 @@ function Toast() {
     draggable
     pauseOnHover
     theme="light"
-    transition: Bounce,
+   
     />
     {/* Same as */}
     <ToastContainer />

@@ -9,9 +9,9 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { ContextPage } from "../ContextApi/ContextPage";
 import { useContext } from "react";
-import Alerts from "../Compononts/Alert"
+
 export default function Basket() {
-  const { basket, removeFromBasket,loading,alerts } = useContext(ContextPage);
+  const { basket, removeFromBasket, } = useContext(ContextPage);
 
   const handleClick = (item) => {
     removeFromBasket(item);

@@ -7,7 +7,6 @@ function useToggle() {
 
     const changeFunc = () =>{
         setOpen(!open)
-        console.log(open)
     }
 
     return {

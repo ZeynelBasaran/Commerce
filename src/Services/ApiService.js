@@ -18,7 +18,18 @@ export const getCategories = async () => {
     );
     return response.data;
   } catch (error) {
-    console.error("API get isteği başarısız:", error);
     throw error;
   }
 };
+
+export const getCategoriesPagesData = async (category) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}category/${category}`
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+

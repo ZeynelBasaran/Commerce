@@ -17,7 +17,7 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div style={{width:"250px",height: "350px" }} className=" bg-white border border-gray-200 rounded-lg hover:shadow-xl">
+    <div style={{width:"230px",height: "350px" }} className=" bg-white border border-gray-200 rounded-lg hover:shadow-xl">
       <div className="" style={{width:"100%",height:"200px"}}>
         <a onClick={() => navigate("product/" + id)} className="cursor-pointer">
           <img style={{width:"100%",height:"100%"}} className="p-8 " src={images[0]} alt={title} />

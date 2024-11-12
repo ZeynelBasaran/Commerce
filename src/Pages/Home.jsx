@@ -46,11 +46,9 @@ function Products() {
   return (
     <>
       {userActive && <h1 className="container">Hoşgeldiniz sayın {userInfo.displayName}</h1>}
-      <div className="container flex">
+      <div className="container flex flex-col sm:flex sm:flex-row gap-1">
         <Filter />
-        <div className="flex flex-wrap justify-between gap-y-6">
-
-
+        <div className="flex flex-wrap justify-center sm:justify-between gap-2 ">
           {products?.map((product, index) => (
             <ProductCard key={`${index}pro`} product={product} />
           ))}

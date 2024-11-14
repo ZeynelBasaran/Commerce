@@ -9,7 +9,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 function ProductPage() {
 
-  const { products, addToBasket, removeFromBasket } = useContext(ContextPage);
+  const { products, addToBasket, decreaseFromBasket } = useContext(ContextPage);
   const { id } = useParams();
 
   let selectedItem = products.find((item) => {
@@ -29,12 +29,12 @@ function ProductPage() {
     addToBasket(selectedItem);
   };
   const removeClick = () => {
-    removeFromBasket(selectedItem);
+    decreaseFromBasket(selectedItem);
   };
 
-  console.log(reviews)
+  
   return (
-    <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased">
+    <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased ">
       <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
           <div className="shrink-0 max-w-md lg:max-w-lg mx-auto">
@@ -97,7 +97,7 @@ function ProductPage() {
 
       <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0  bg-white antialiased dark:bg-gray-900 border-2">
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0 ">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 my-2">
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Yorumlar</h2>
 
             <div className="mt-2 flex items-center gap-2 sm:mt-0">

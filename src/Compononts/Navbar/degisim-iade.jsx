@@ -2,13 +2,14 @@ import React from 'react'
 
 function degisimiade() {
   return (
-    <div className='container text-justify'>
-      <div className='my-6'>
+    <div className=' text-justify bg-gray-50 dark:bg-gray-900 dark:text-white '>
+      <div className='container'>
+      <div className='py-6'>
         <h5 className='font-bold'>Ürün değişimi / iadesi yapabilirmiyim?</h5>
         <p>Evet, satın aldığınız ürün için değişim veya iade talebinde bulunabilirsiniz.</p>
       </div>
 
-      <div className='my-6'>
+      <div className='py-6'>
         <h5 className='font-bold'>Değişim koşulları nelerdir?</h5>
         <ul>
           <li>Ürünün kullanılmamış ve bozulmamış olması gerekmektedir
@@ -33,13 +34,13 @@ function degisimiade() {
         </ul>
       </div>
 
-      <div className='my-6'>
+      <div className='py-6'>
         <h5 className='font-bold'>Değişim istediğim ürün ne zaman gönderilir?</h5>
         <p> Gönderdiğiniz ürün bize ulaştıktan itibaren 3 iş günü içinde yeni ürün ile değişimi yapılarak kargoya verilir.
         </p>
       </div>
 
-      <div className='my-6'>
+      <div className='py-6'>
         <h5 className='font-bold'>İki Adımda Kolay İade</h5>
         <ul>
           <li>1- İade için aşağıdaki bilgileri doldurup, bu formu kutu içerisinde gönderiniz.</li>
@@ -50,14 +51,14 @@ function degisimiade() {
         </ul>
       </div>
 
-      <div className='my-6'>
+      <div className='py-6'>
         <h5 className='font-bold'>İade Şartları
         </h5>
         <p>- Satın aldığınız ürünü size ulaştığı tarihten itibaren 14 Gün içerisinde kullanılmamış olması şartı ile tarafımıza göndererek iade talebinde bulunabilirsiniz.</p>
         <p>- Orjinal kutusunda zarar görmemiş şekilde gönderiniz.</p>
       </div>
 
-      <div className='my-6'>
+      <div className='py-6'>
         <h5>Ücret İadesi
 
         </h5>
@@ -74,6 +75,9 @@ function degisimiade() {
         </ul>
       </div>
 
+
+      </div>
+      
 
     </div>
   )

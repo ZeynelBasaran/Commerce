@@ -1,18 +1,14 @@
 import React from 'react'
 import Rating from "../Compononts/Rating"
 
-function Comments({ item, key }) {
-  console.log(item)
-
+function Comments({ item }) {
   return (
     <>
-     <hr className=''/>
+      <hr className='' />
       <div className="mt-6 divide-y divide-gray-200 dark:divide-gray-700 ">
-     
         <div className="gap-3 pb-6 sm:flex sm:items-start">
-       
           <div className="shrink-0 space-y-2 sm:w-48 md:w-72 ">
-         
+            
             <div className="flex items-center gap-0.5">
               <Rating rating={item.rating} />
             </div>
@@ -38,10 +34,6 @@ function Comments({ item, key }) {
             <p className="text-base font-normal text-gray-500 dark:text-gray-400">{item.comment}</p>
           </div>
         </div>
-       
-
-
-
       </div>
 
 

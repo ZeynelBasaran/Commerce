@@ -13,7 +13,7 @@ import { getData } from "../Services/ApiService";
 
 
 function Products() {
-  const { products, loading, basket, setUserInfo, userInfo, userActive,setProducts,setLoading } = useContext(ContextPage);
+  const { products, loading, basket, setUserInfo, userInfo, userActive,setProducts,setLoading,totalAmount } = useContext(ContextPage);
 
 
 
@@ -37,6 +37,7 @@ function Products() {
     }
     fetchData()
     getUserİnfo()
+    totalAmount()
   }, [basket]);
 
   if (loading) {
@@ -45,8 +46,10 @@ function Products() {
   
   return (
     <>
-      {userActive && <h1 className="container">Hoşgeldiniz sayın {userInfo.displayName}</h1>}
-      <div className="container flex flex-col sm:flex sm:flex-row gap-1">
+    
+      {userActive && <h1 className="container bg-white dark:bg-gray-800 text-black dark:text-white">Hoşgeldiniz sayın {userInfo.displayName}</h1>}
+      {userActive && <h1 className="container bg-white dark:bg-gray-800 text-black dark:text-white">Hoşgeldiniz sayın {userInfo.displayName}</h1>}
+      <div className="container flex flex-col sm:flex sm:flex-row gap-1 ">
         <Filter />
         <div className="flex flex-wrap justify-center sm:justify-between gap-2 ">
           {products?.map((product, index) => (

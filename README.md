@@ -11,6 +11,9 @@ E-Ticaret web sitesi
 - **React Router**: Uygulama içinde farklı sayfalar arasında gezinmeyi sağlayan bir kütüphane. Sayfa yönlendirmeleri için kullanılır.
 - **Axios**: API isteklerini kolayca yönetmek için kullanılan bir kütüphane. Ticaret projelerinde sıkça API'den veri çekmek ve sunmak için kullanılır.
 - **MUI (Material-UI)**: Kullanıcı arayüzü oluşturmayı hızlandıran, React ile uyumlu bir komponent kütüphanesidir.
+- **Firebase**: Kimlik Doğrulama (Authentication): Kullanıcıların uygulamaya kolayca giriş yapmasını sağlayan bir kimlik doğrulama sistemi sunar. E-posta, Google, Facebook, Twitter gibi çeşitli sağlayıcılar üzerinden giriş yapma imkanı verir.
+- **Yup** JavaScript ve TypeScript projelerinde kullanılan bir doğrulama (validation) kütüphanesidir.
+- **Formik** React uygulamalarında form yönetimini kolaylaştırmak için kullanılan popüler bir kütüphanedir.
 
 ## Başlangıç
 

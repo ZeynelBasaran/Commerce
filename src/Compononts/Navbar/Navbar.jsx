@@ -1,5 +1,5 @@
-import { useEffect, useState,useContext } from "react";
-import Badge from "../Badge";
+import { useEffect, useState, useContext } from "react";
+import Badge from "../Badge"
 import { Link, useNavigate } from "react-router-dom";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -16,42 +16,21 @@ import { ContextPage } from "../../ContextApi/ContextPage";
 
 
 function Navbar() {
-  const { theme, setTheme, basket, addToBasket, removeFromBasket, setUserActive, userActive, setUserInfo } =
+  const { isDarkMode, setİsDarkMode, basket, setUserActive, userActive, setUserInfo,basketPrice } =
     useContext(ContextPage);
 
   const navigate = useNavigate()
 
   const { open, changeFunc } = useToggle()
-  const [toplamTutar, setToplamTutar] = useState(0);
-
-
-
-
+  
   useEffect(() => {
-    toplamTutarFunc()
-  }, [addToBasket, removeFromBasket])
-
-
-  const changeTheme = () => {
-    setTheme(!theme);
-    const root = document.getElementById("root");
-    if (theme) {
-      root.style.backgroundColor = "black";
-      root.style.color = "white";
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
     } else {
-      root.style.backgroundColor = "white";
-      root.style.color = "black";
+      document.documentElement.classList.remove('dark');
     }
-  };
 
-  const toplamTutarFunc = () => {
-    let toplam = 0;
-    basket?.map((item) => {
-      toplam += item.adet * item.price
-    })
-
-    setToplamTutar(toplam)
-  }
+  }, [isDarkMode])
 
   const logOut = async () => {
     await signOut(auth)
@@ -61,9 +40,13 @@ function Navbar() {
 
   }
 
+  const changeTheme = () => {
+    setİsDarkMode(!isDarkMode);
+  };
+
   return (
     <>
-      <nav className="flex-row">
+      <nav className="flex-row bg-gray-50 dark:bg-gray-900 dark:text-white dark:border-b-2 border-b-2 border-white dark:border-white" >
         <Banner />
 
         <div className="flex justify-between container">
@@ -77,7 +60,7 @@ function Navbar() {
             </li>
             <li>
               <Link to={"/basket"} className="cursor">
-                Basket
+                Sepet
               </Link>
             </li>
             <li>
@@ -105,10 +88,11 @@ function Navbar() {
               <Searchbar />
             </li>
             <li>
-              {theme ? (
-                <DarkModeIcon className="cursor-pointer" onClick={changeTheme} />
-              ) : (
+              {isDarkMode ? (
                 <LightModeIcon className="cursor-pointer" onClick={changeTheme} />
+
+              ) : (
+                <DarkModeIcon className="cursor-pointer" onClick={changeTheme} />
               )}
             </li>
             <li className="cursor-pointer" onClick={changeFunc}>
@@ -141,9 +125,25 @@ function Navbar() {
 
           );
         })}
-        <div>Toplam Tutar : {toplamTutar}</div>
+        <div>Toplam Tutar : {basketPrice}</div>
       </Drawer>
     </>
   );
 }
 export default Navbar;
+
+
+/*
+const changeTheme = () => {
+    setTheme(!theme);
+    const root = document.getElementById("root");
+    if (theme) {
+      root.style.backgroundColor = "black";
+      root.style.color = "white";
+    } else {
+      root.style.backgroundColor = "white";
+      root.style.color = "black";
+    }
+  };
+
+*/

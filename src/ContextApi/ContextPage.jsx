@@ -22,17 +22,17 @@ const addLocalStorage = (item) => {
 
 function ContextComp({ children }) {
 
+  const [isDarkMode, setİsDarkMode] = useState(() => {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 
-  //console.log(`${import.meta.env.VITE_APP_BASE_URL}`)
-
-
-  const [theme, setTheme] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const [userActive, setUserActive] = useState(false)
   const [userInfo, setUserInfo] = useState([])
 
   const [basket, setBasket] = useState(getLS());
+  const [basketPrice, setBasketPrice] = useState(0);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -40,7 +40,6 @@ function ContextComp({ children }) {
   //Fonksiyon ile sepete eleman ekleme
   const addToBasket = (product) => {
     //Önce basket da mevcut mu kontrol ? False ise direkt adet ekleyerek itemi ekliyoruz True ise daha önce eklenmiş map ile manipüle ediyoruz.
-
     const findProduct = basket.find((item) => {
       return item.id === product.id;
     });
@@ -55,14 +54,15 @@ function ContextComp({ children }) {
       addLocalStorage(newArr);
     } else {
       setBasket((prev) => [...prev, { ...product, adet: 1 }]);
-      //[...basket, { ...product, adet: 1 }]
       addLocalStorage([...basket, { ...product, adet: 1 }]);
+      toast("Ürün Sepete Eklendi.")
     }
-    toast("Ürün Sepete Eklendi.")
+   
+    
   };
 
   //Fonksiyon ile sepette ürün silmek.Seçtigimiz itemı basket içinde bulup ilgili eleman map ile manipüle edilir. Adet 0'dan küçükse filtre edilir.
-  const removeFromBasket = (product) => {
+  const decreaseFromBasket = (product) => {
     const removeItem = basket
       .map((item) => {
         return item.id === product.id ? { ...item, adet: item.adet - 1 } : item;
@@ -70,10 +70,33 @@ function ContextComp({ children }) {
       .filter((item) => item.adet > 0);
     setBasket(removeItem);
     addLocalStorage(removeItem);
-    toast("Ürün Sepetten kaldırıldı.")
+    
+    
   };
 
-  console.log(products)
+
+  const removeItemFromBasket = (product) => {
+    console.log(product)
+    console.log(basket)
+    const filterList = basket.filter((items)=> items.id !== product.id)
+    setBasket(filterList)
+    addLocalStorage(filterList);
+    toast("Ürün Sepetten kaldırıldı.")
+    
+   
+  };
+
+  //Basket USD Toplamı
+  const totalAmount = () => {
+    let toplam = 0;
+    basket.map((item) => {
+      toplam += item.adet * item.price
+    })
+    console.log(toplam)
+    setBasketPrice(toplam)
+    
+  }
+  
 
   return (
 
@@ -81,16 +104,24 @@ function ContextComp({ children }) {
       value={{
         basket,
         addToBasket,
-        removeFromBasket,
+        decreaseFromBasket,
         products,
         loading,
-        
         setLoading,
-        setTheme,
-        theme,
+        removeItemFromBasket,
         addLocalStorage,
         userActive,
-        setUserActive, userInfo, setUserInfo, setProducts, setCategories, categories
+        setUserActive,
+        userInfo,
+        setUserInfo,
+        setProducts,
+        setCategories,
+        categories,
+        isDarkMode,
+        setİsDarkMode,
+        setBasket,
+        basketPrice,
+        totalAmount
 
       }}
     >

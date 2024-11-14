@@ -2,13 +2,14 @@ import React from 'react'
 
 function musterimemnuniyeti() {
     return (
-        <div className='container text-justify'>
+        <div className=' text-justify bg-gray-50 dark:bg-gray-900 dark:text-white'>
+            <div className="container">
             <h5 className='font-bold text-center'> MÜŞTERİ MEMNUNİYET POLİTİKAMIZ
             </h5>
 
-            <p className='my-4'>HızlıAl ailesi olarak bizler ancak ve ancak yüksek müşteri memnuniyeti sağlayarak ticari başarının yakalanabileceğini ve bu nedenle piyasada rakiplerimizle rekabette fark yaratabileceğimiz en önemli unsurun koşulsuz müşteri memnuniyeti olduğun farkındayız.</p>
+            <p className='py-4'>HızlıAl ailesi olarak bizler ancak ve ancak yüksek müşteri memnuniyeti sağlayarak ticari başarının yakalanabileceğini ve bu nedenle piyasada rakiplerimizle rekabette fark yaratabileceğimiz en önemli unsurun koşulsuz müşteri memnuniyeti olduğun farkındayız.</p>
             
-            <ul className='my-6'>
+            <ul className='py-6'>
             <p>Bu amaçla;</p>
                 <li>- Müşterilerimizin kendilerini değerli hissetmek istediğini bilir, ihtiyaç ve beklentilerini anlamak için çaba gösteririz.
                 </li>
@@ -21,6 +22,7 @@ function musterimemnuniyeti() {
             </ul>
             <p>
             arkasında durur, sizlere kaliteli hizmet sunmaya devam ederiz.</p>
+            </div>
 
 
 

@@ -20,8 +20,8 @@ export default function CustomizedBadges() {
 
   return (
     <IconButton aria-label="cart">
-      <StyledBadge badgeContent={basket.length} color="secondary">
-        <ShoppingCartIcon />
+      <StyledBadge badgeContent={basket.length} color="error">
+        <ShoppingCartIcon className="dark:text-white"/>
       </StyledBadge>
     </IconButton>
   );

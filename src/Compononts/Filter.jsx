@@ -2,9 +2,6 @@ import React from 'react'
 import { getCategories, getCategoriesPagesData } from '../Services/ApiService'
 import { useEffect, useContext } from 'react'
 import { ContextPage } from '../ContextApi/ContextPage';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 
 
 
@@ -46,7 +43,7 @@ function Filter() {
   return (
     <section className=' bg-white border border-gray-200 rounded-lg'>
       <ul className='grid grid-cols-3 sm:grid-cols-1' style={{minWidth:"120px"}}>
-        {categories.map((item)=> <li className='text-sm	cursor-pointer p-1 hover:shadow-xl flex ' onClick={() => { choseCategory(item) }}>{item.name}</li>)}
+        {categories.map((item,key)=> <li className='text-sm	cursor-pointer p-1 hover:shadow-xl flex' key={`${item.name}key`} onClick={() => { choseCategory(item) }}>{item.name}</li>)}
       </ul>
     </section>
   )

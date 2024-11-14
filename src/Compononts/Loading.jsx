@@ -6,8 +6,6 @@ export default function LinearIndeterminate() {
   return (
     <Box sx={{ width: '100%',marginTop:"200px",padding:"100px"}}>
       <LinearProgress />
-
-    
     </Box>
   );
 }

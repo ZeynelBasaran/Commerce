@@ -17,10 +17,11 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div style={{width:"230px",height: "350px" }} className=" bg-white border border-gray-200 rounded-lg hover:shadow-xl">
+    <div style={{width:"240px",height: "350px" }} className=" bg-white border border-gray-200 rounded-lg hover:shadow-xl">
+  
       <div className="" style={{width:"100%",height:"200px"}}>
         <a onClick={() => navigate("product/" + id)} className="cursor-pointer">
-          <img style={{width:"100%",height:"100%"}} className="p-8 " src={images[0]} alt={title} />
+          <img style={{width:"100%",height:"100%"}} className="p-8" src={images[0]} alt={title} />
         </a>
       </div>
 
@@ -36,7 +37,7 @@ export default function ProductCard({ product }) {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-sm font-bold text-gray-900 ">{price} $</span>
-          <button onClick={handleClick} className="cursor-pointer text-white bg-yellow-600 hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-600 ">Sepete Ekle</button>
+          <button onClick={handleClick} className=" hover:bg-yellow-600 bg-yellow-700	cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center	">Sepete Ekle</button>
         </div>
       </div>
     </div>

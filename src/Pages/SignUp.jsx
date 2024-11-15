@@ -38,7 +38,8 @@ function User() {
     })
 
     return (
-        <section className='container register p-6'>
+        <section className='dark:bg-gray-900 dark:text-black p-4'>
+            <div className='container register p-6'>
             <form onSubmit={handleSubmit}>
                 <h5>Kayıt Ol</h5>
                 <div className='my-4'>
@@ -53,11 +54,12 @@ function User() {
                 </div>
 
                 <div className='flex flex-col gap-y-4'>
-                    <Button variant="contained" className='' type='submit' >Kayıt Ol</Button>
-                    <Button variant="contained" className='' startIcon={<GoogleIcon />} >Google ile kayıt ol</Button>
+                    <Button variant="contained" className=' bg-pink-700 text-white hover:bg-pink-800  focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800' type='submit' >Kayıt Ol</Button>
+                    <Button variant="contained" className=' bg-pink-700 text-white hover:bg-pink-800  focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800' startIcon={<GoogleIcon />} >Google ile kayıt ol</Button>
                 </div>
 
             </form>
+            </div>
         </section>
     )
 }

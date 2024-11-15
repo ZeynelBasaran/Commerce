@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 function Banner() {
     return (
-        <div className='banner dark:text-white '>
+        <div className='banner dark:text-white dark:bg-pink-600'>
             <ul className="flex justify-between  container">
                 <li>
                     <Link to={"/hizli-gonderim"}>

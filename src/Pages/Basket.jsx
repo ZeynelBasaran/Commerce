@@ -1,11 +1,15 @@
 import * as React from "react";
 import { ContextPage } from "../ContextApi/ContextPage";
 import { useContext } from "react";
-import { RestaurantRounded } from "@mui/icons-material";
+import { useNavigate,useParams } from 'react-router';
 import { useEffect } from "react";
+
+
 
 export default function Basket() {
   const { basket, decreaseFromBasket, addToBasket, removeItemFromBasket, basketPrice, totalAmount } = useContext(ContextPage);
+  const navigate = useNavigate()
+  
 
   console.log(basketPrice)
   useEffect((
@@ -29,9 +33,9 @@ export default function Basket() {
 
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 dark:text-white p-4">
-      <section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
-        <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    <div className=" dark:bg-gray-900 dark:text-white p-4">
+      <section className="container bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
+        <div className="mx-auto  px-4 2xl:px-0">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Sepetteki Ürünler</h2>
 
           <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
@@ -67,7 +71,7 @@ export default function Basket() {
                       </div>
 
                       <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                        <a href="#" className="text-base font-medium text-gray-900 hover:underline dark:text-white">{item.title}</a>
+                        <a onClick={() => navigate("product/" + item.id)} className="text-base font-medium text-gray-900 hover:underline dark:text-white cursor-pointer">{item.title}</a>
 
                         <div className="flex gap-4">
                           <button onClick={() => { removeItemBtn(item) }} type="button" className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500 item-cursor">
@@ -106,12 +110,13 @@ export default function Basket() {
                     <dd className="text-base font-bold text-gray-900 dark:text-white">{formatToCurrency(basketPrice)}</dd>
                   </dl>
                 </div>
-                <a href="#" className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</a>
+                
+                <a href="#" className="flex w-full items-center justify-center rounded-lg bg-pink-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-pink-800 focus:outline-none focus:ring-4 focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800">Satın Al</a>
 
                 <div className="flex items-center justify-center gap-2">
-                  <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
-                  <a href="#" title="" className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
-                    Continue Shopping
+                  <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> veya </span>
+                  <a onClick={()=>{navigate("/")}} title="" className="inline-flex items-center gap-2 text-sm font-medium text-primary-700  focus:outline-none dark:text-primary-500 cursor-pointer hover:underline">
+                    Alışverişe Devam Et
                     <svg className="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
                     </svg>

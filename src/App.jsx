@@ -12,6 +12,7 @@ import İnfo from "./Pages/İnfo"
 import Login from "./Pages/Login"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from "./Compononts/Footer";
 
 
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<Product />}></Route>
         <Route path="/basket" element={<Basket />}></Route>
         <Route path="/product/:id" element={<ProductPage />}></Route>
+        <Route path="/basket/product/:id" element={<ProductPage />}></Route>
         <Route path="/info" element={<İnfo />}></Route>
         <Route path="/signup" element={<SingUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -49,6 +51,7 @@ function App() {
         theme="light"
       />
       <ToastContainer />
+      <Footer />
     </>
   );
 }

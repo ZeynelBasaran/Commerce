@@ -12,6 +12,9 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
 import Searchbar from "./Searchbar";
 import { ContextPage } from "../../ContextApi/ContextPage";
+import MenuIcon from '@mui/icons-material/Menu';
+
+
 
 
 
@@ -22,6 +25,7 @@ function Navbar() {
   const navigate = useNavigate()
 
   const { open, changeFunc } = useToggle()
+  
   
   useEffect(() => {
     if (isDarkMode) {
@@ -43,6 +47,8 @@ function Navbar() {
   const changeTheme = () => {
     setİsDarkMode(!isDarkMode);
   };
+
+  console.log(open)
 
   return (
     <>
@@ -87,16 +93,19 @@ function Navbar() {
             <li className="">
               <Searchbar />
             </li>
-            <li>
+            <li className="hidden sm:block">
               {isDarkMode ? (
                 <LightModeIcon className="cursor-pointer" onClick={changeTheme} />
 
               ) : (
-                <DarkModeIcon className="cursor-pointer" onClick={changeTheme} />
+                <DarkModeIcon className="cursor-pointer " onClick={changeTheme} />
               )}
             </li>
-            <li className="cursor-pointer" onClick={changeFunc}>
+            <li className="cursor-pointer  hidden sm:block" onClick={changeFunc}>
               <Badge />
+            </li>
+            <li className="cursor-pointer sm:hidden" onClick={changeFunc}>
+              <MenuIcon />
             </li>
           </ul>
         </div>

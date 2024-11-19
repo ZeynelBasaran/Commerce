@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import { ContextPage } from "../ContextApi/ContextPage";
 import { useContext } from "react";
 import { useNavigate } from "react-router";
@@ -17,16 +16,16 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div style={{ width: "240px", height: "350px" }} className=" bg-white border border-gray-200 rounded-lg hover:shadow-xl">
+    <div style={{width: "230px", height: "350px" }} className=" bg-white border border-gray-200 rounded-lg hover:shadow-xl" >
 
       <div className="" style={{ width: "100%", height: "200px" }}>
-        <a onClick={() => navigate("product/" + id)} className="cursor-pointer">
+        <a onClick={() => navigate("/product/" + id)} className="cursor-pointer">
           <img style={{ width: "100%", height: "100%" }} className="p-8" src={images[0]} alt={title} />
         </a>
       </div>
 
       <div className="px-5 pb-5" style={{ width: "100%", height: "150px" }}>
-        <a onClick={() => navigate("product/" + id)} className="cursor-pointer">
+        <a onClick={() => navigate("/product/" + id)} className="cursor-pointer">
           <h5 style={{ height: "40px" }} className="text-sm font-semibold tracking-tight text-gray-900 ">{title.substring(0, 30)}</h5>
         </a>
         <div className="flex items-center mt-2.5 mb-5">

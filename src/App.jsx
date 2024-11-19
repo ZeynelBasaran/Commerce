@@ -13,6 +13,7 @@ import Login from "./Pages/Login"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "./Compononts/Footer";
+import Error from "./Compononts/Error";
 
 
 
@@ -29,13 +30,15 @@ function App() {
         <Route path="/degisim-iade" element={<Degişimİade />}></Route>
 
         {/* Pages */}
-        <Route path="/" element={<Product />}></Route>
+       
         <Route path="/basket" element={<Basket />}></Route>
         <Route path="/product/:id" element={<ProductPage />}></Route>
-        <Route path="/basket/product/:id" element={<ProductPage />}></Route>
+        
         <Route path="/info" element={<İnfo />}></Route>
         <Route path="/signup" element={<SingUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/" element={<Product />}></Route>
+        <Route path="*" element={<Error />}></Route>
 
       </Routes>
       <ToastContainer
@@ -57,3 +60,7 @@ function App() {
 }
 
 export default App;
+
+/*
+<Route path="/basket/product/:id" element={<ProductPage />}></Route>
+*/

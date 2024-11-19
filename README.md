@@ -14,6 +14,9 @@ E-Ticaret web sitesi
 - **Firebase**: Kimlik Doğrulama (Authentication): Kullanıcıların uygulamaya kolayca giriş yapmasını sağlayan bir kimlik doğrulama sistemi sunar. E-posta, Google, Facebook, Twitter gibi çeşitli sağlayıcılar üzerinden giriş yapma imkanı verir.
 - **Yup** JavaScript ve TypeScript projelerinde kullanılan bir doğrulama (validation) kütüphanesidir.
 - **Formik** React uygulamalarında form yönetimini kolaylaştırmak için kullanılan popüler bir kütüphanedir.
+- **React-SlideShow** React ile oluşturulmuş, kaydırma, solma ve yakınlaştırma efektlerini destekleyen basit bir slayt gösterisi bileşenidir.
+
+
 
 ## Başlangıç
 

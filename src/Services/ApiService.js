@@ -12,6 +12,16 @@ export const getData = async () => {
   }
 };
 
+export const getDataiById = async (id) => {
+  try {
+    const response = await axios.get(BASE_URL+id);
+    return response.data;
+    
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const getCategories = async () => {
   try {
     const response = await axios.get(

@@ -76,14 +76,10 @@ function ContextComp({ children }) {
 
 
   const removeItemFromBasket = (product) => {
-    console.log(product)
-    console.log(basket)
     const filterList = basket.filter((items)=> items.id !== product.id)
     setBasket(filterList)
     addLocalStorage(filterList);
     toast("Ürün Sepetten kaldırıldı.")
-    
-   
   };
 
   //Basket USD Toplamı
@@ -92,9 +88,7 @@ function ContextComp({ children }) {
     basket.map((item) => {
       toplam += item.adet * item.price
     })
-    console.log(toplam)
     setBasketPrice(toplam)
-    
   }
   
 

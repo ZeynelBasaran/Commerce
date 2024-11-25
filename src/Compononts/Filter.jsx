@@ -10,7 +10,7 @@ import StickyBox from "react-sticky-box";
 
 
 function Filter() {
-  const { setLoading, categories, setCategories, setProducts } = useContext(ContextPage);
+  const { setLoading, categories, setCategories, setProducts,isVisible } = useContext(ContextPage);
 
   const fetchData = async () => {
     try {
@@ -42,11 +42,11 @@ function Filter() {
   }
 
 
-
+  
   return (
-    <StickyBox className='self-start hidden sm:block' >
-    <section className=' bg-white border border-gray-200 rounded-lg'>
-      <ul className='grid grid-cols-3 sm:grid-cols-1' style={{minWidth:"120px"}}>
+    <StickyBox className={`self-start sm:block ${isVisible} `}  >
+    <section className=' bg-white dark:border rounded-lg'>
+      <ul className='grid grid-cols-4 sm:grid-cols-1 p-2' style={{minWidth:"120px"}}>
         {categories.map((item,key)=> <li className='text-sm	cursor-pointer p-1 hover:shadow-xl flex' key={`${item.name}key`} onClick={() => { choseCategory(item) }}>{item.name}</li>)}
       </ul>
     </section>
@@ -57,9 +57,8 @@ function Filter() {
 
 export default Filter;
 
-/*
-self-start hidden 
-*/
+
+
 
 
 

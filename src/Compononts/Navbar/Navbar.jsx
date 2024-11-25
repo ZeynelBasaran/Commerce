@@ -19,14 +19,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 
 function Navbar() {
-  const { isDarkMode, setİsDarkMode, basket, setUserActive, userActive, setUserInfo,basketPrice } =
+  const { isDarkMode, setİsDarkMode, basket, setUserActive, userActive, setUserInfo, basketPrice, isVisible, setIsVisible, removeItemFromBasket } =
     useContext(ContextPage);
 
   const navigate = useNavigate()
 
   const { open, changeFunc } = useToggle()
-  
-  
+
+
+
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
@@ -48,7 +49,11 @@ function Navbar() {
     setİsDarkMode(!isDarkMode);
   };
 
-  console.log(open)
+  const formatToCurrency=(num) => {
+    // Sayıyı virgülden sonra 2 basamakla sınırlayıp USD simgesi ekler ve binlik ayraç kullanır
+    return '$' + num.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
 
   return (
     <>
@@ -104,37 +109,40 @@ function Navbar() {
             <li className="cursor-pointer  hidden sm:block" onClick={changeFunc}>
               <Badge />
             </li>
-            <li className="cursor-pointer sm:hidden" onClick={changeFunc}>
-              <MenuIcon />
+            <li className="cursor-pointer sm:hidden" >
+              <MenuIcon onClick={() => { setIsVisible(isVisible === "" ? "hidden" : "") }} />
             </li>
           </ul>
         </div>
 
       </nav>
 
-      <Drawer anchor="right" open={open} onClose={() => { changeFunc() }}>
+      <Drawer sx={{}} anchor="right" open={open} onClose={() => { changeFunc() }}>
         {basket?.map((item, idx) => {
           return (
 
-            <ul key={`${item}${idx}`} className={` flex items-center justify-between gap-x-2 px-10 py-4  `} >
+            <ul key={`${item}${idx}`} className={`flex items-center justify-between gap-x-2 px-4 py-4`} >
               <div className="flex items-center">
                 <img
                   src={item.images}
                   alt={item.title}
                   style={{ width: "50px", height: "50px" }}
-
                 />
-                <p className="mx-1" style={{ width: "250px" }}>{`${item.title} (${item.adet})`}</p>
+                <p className="mx-1" style={{ width: "200px" }}>{item.title.substring(0,40)}({item.adet})</p>
               </div>
 
-              <div style={{ fontSize: "0.9rem" }}>{item.price + "₺"}</div>
-              <div style={{ fontSize: "1.1rem", fontWeight: "900" }}>{item.adet * item.price}₺</div>
-              <button onClick={() => { removeFromBasket(item) }}>Sil</button>
+              <div className="font-light text-base">{item.price}</div>
+              <div className="font-extrabold mx-2 text-lg">{formatToCurrency(item.adet * item.price)}</div>
+              <button onClick={() => { removeItemFromBasket(item) }} type="button" className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500 item-cursor">
+                <svg className="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                </svg>
+              </button>
             </ul>
 
           );
         })}
-        <div>Toplam Tutar : {basketPrice}</div>
+        <div className="px-4 ">Toplam Tutar : ${basketPrice}</div>
       </Drawer>
     </>
   );
@@ -142,17 +150,3 @@ function Navbar() {
 export default Navbar;
 
 
-/*
-const changeTheme = () => {
-    setTheme(!theme);
-    const root = document.getElementById("root");
-    if (theme) {
-      root.style.backgroundColor = "black";
-      root.style.color = "white";
-    } else {
-      root.style.backgroundColor = "white";
-      root.style.color = "black";
-    }
-  };
-
-*/

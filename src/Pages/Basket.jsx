@@ -6,9 +6,11 @@ import { useEffect } from "react";
 
 
 
+
 export default function Basket() {
   const { basket, decreaseFromBasket, addToBasket, removeItemFromBasket, basketPrice, totalAmount } = useContext(ContextPage);
   const navigate = useNavigate()
+ 
   
 
   console.log(basketPrice)
@@ -29,8 +31,6 @@ export default function Basket() {
     // Sayıyı virgülden sonra 2 basamakla sınırlayıp USD simgesi ekler ve binlik ayraç kullanır
     return '$' + num.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
-
-
 
   return (
     <div className=" dark:bg-gray-900 dark:text-white p-4">

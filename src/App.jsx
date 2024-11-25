@@ -18,7 +18,10 @@ import Error from "./Compononts/Error";
 
 
 
+
+
 function App() {
+
   return (
     <>
       <Navbar />
@@ -33,7 +36,8 @@ function App() {
        
         <Route path="/basket" element={<Basket />}></Route>
         <Route path="/product/:id" element={<ProductPage />}></Route>
-        
+        <Route path="/basket/product/:id" element={<ProductPage />}></Route>
+        <Route path={`/search/:keyword`} element={<Product />}></Route>
         <Route path="/info" element={<İnfo />}></Route>
         <Route path="/signup" element={<SingUp />}></Route>
         <Route path="/login" element={<Login />}></Route>

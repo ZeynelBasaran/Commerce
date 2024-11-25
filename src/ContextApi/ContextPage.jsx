@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 import React from "react";
 import { toast } from "react-toastify";
 
-
 const ContextPage = createContext();
 
 //LS'de Eleman varsa basket a ekleyecek.
@@ -19,23 +18,22 @@ const addLocalStorage = (item) => {
   localStorage.setItem("basket", JSON.stringify(item));
 };
 
-
 function ContextComp({ children }) {
-
   const [isDarkMode, setİsDarkMode] = useState(() => {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
   const [loading, setLoading] = useState(true);
+  const [searchValue, setSearchValue] = useState("");
 
-  const [userActive, setUserActive] = useState(false)
-  const [userInfo, setUserInfo] = useState([])
+  const [userActive, setUserActive] = useState(false);
+  const [userInfo, setUserInfo] = useState([]);
+  const [isVisible, setIsVisible] = useState("hidden");
 
   const [basket, setBasket] = useState(getLS());
   const [basketPrice, setBasketPrice] = useState(0);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-
 
   //Fonksiyon ile sepete eleman ekleme
   const addToBasket = (product) => {
@@ -55,10 +53,8 @@ function ContextComp({ children }) {
     } else {
       setBasket((prev) => [...prev, { ...product, adet: 1 }]);
       addLocalStorage([...basket, { ...product, adet: 1 }]);
-      toast("Ürün Sepete Eklendi.")
+      toast("Ürün Sepete Eklendi.");
     }
-   
-    
   };
 
   //Fonksiyon ile sepette ürün silmek.Seçtigimiz itemı basket içinde bulup ilgili eleman map ile manipüle edilir. Adet 0'dan küçükse filtre edilir.
@@ -70,30 +66,25 @@ function ContextComp({ children }) {
       .filter((item) => item.adet > 0);
     setBasket(removeItem);
     addLocalStorage(removeItem);
-    
-    
   };
 
-
   const removeItemFromBasket = (product) => {
-    const filterList = basket.filter((items)=> items.id !== product.id)
-    setBasket(filterList)
+    const filterList = basket.filter((items) => items.id !== product.id);
+    setBasket(filterList);
     addLocalStorage(filterList);
-    toast("Ürün Sepetten kaldırıldı.")
+    toast("Ürün Sepetten kaldırıldı.");
   };
 
   //Basket USD Toplamı
   const totalAmount = () => {
     let toplam = 0;
-    basket.map((item) => {
-      toplam += item.adet * item.price
-    })
-    setBasketPrice(toplam)
-  }
-  
+    basket?.map((item) => {
+      toplam += item.adet * item.price;
+    });
+    setBasketPrice(toplam);
+  };
 
   return (
-
     <ContextPage.Provider
       value={{
         basket,
@@ -115,8 +106,11 @@ function ContextComp({ children }) {
         setİsDarkMode,
         setBasket,
         basketPrice,
-        totalAmount
-
+        totalAmount,
+        isVisible,
+        setIsVisible,
+        searchValue,
+        setSearchValue,
       }}
     >
       {children}
@@ -126,5 +120,3 @@ function ContextComp({ children }) {
 
 export default ContextComp; //Provider Compo exportu
 export { ContextPage }; //ContextExportu
-
-

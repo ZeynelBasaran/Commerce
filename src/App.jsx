@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Routes>
+      <Routes >
         {/* Top Banner  */}
         <Route path="/hizli-gonderim" element={<HizliGönderi />}></Route>
         <Route path="/guvenli-alisveris" element={<Guvenliİade />}></Route>

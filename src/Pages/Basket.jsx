@@ -11,9 +11,6 @@ export default function Basket() {
   const { basket, decreaseFromBasket, addToBasket, removeItemFromBasket, basketPrice, totalAmount } = useContext(ContextPage);
   const navigate = useNavigate()
  
-  
-
-  console.log(basketPrice)
   useEffect((
   ) => { totalAmount() }, [basket])
 

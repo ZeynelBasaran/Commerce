@@ -13,6 +13,7 @@ import { auth } from "../../Firebase";
 import Searchbar from "./Searchbar";
 import { ContextPage } from "../../ContextApi/ContextPage";
 import MenuIcon from '@mui/icons-material/Menu';
+import { toast } from 'react-toastify';
 
 
 
@@ -42,6 +43,7 @@ function Navbar() {
     setUserActive(false)
     setUserInfo([])
     navigate("/login")
+    toast.success("Çıkış Yapıldı.")
 
   }
 
@@ -49,7 +51,7 @@ function Navbar() {
     setİsDarkMode(!isDarkMode);
   };
 
-  const formatToCurrency=(num) => {
+  const formatToCurrency = (num) => {
     // Sayıyı virgülden sonra 2 basamakla sınırlayıp USD simgesi ekler ve binlik ayraç kullanır
     return '$' + num.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
@@ -61,37 +63,49 @@ function Navbar() {
         <Banner />
 
         <div className="flex justify-between container">
-          <ul className="flex gap-x-2 items-center py-2">
+          <ul className="flex gap-x-4 items-center py-2">
 
             <li>
-
               <Link to={"/"} className="cursor">
                 <img src={Logo} alt="" width={80} />
               </Link>
             </li>
+
             <li>
               <Link to={"/basket"} className="cursor">
                 Sepet
               </Link>
             </li>
-            <li>
-              <Link to={"/signup"} className="cursor">
-                Kayıt ol
-              </Link>
-            </li>
-            <li>
-              <Link to={"/login"} className="cursor">
-                Giriş yap
-              </Link>
-            </li>
-            {userActive && <li>
-              <Link to={"/info"} className="cursor">
-                Bilgileri Güncelle
-              </Link>
-            </li>}
-            {userActive && <li className="cursor-pointer" onClick={logOut}>
-              Çıkış Yap
-            </li>}
+            
+            {userActive ?
+              <>
+                <li>
+                  <Link to={"/info"} className="cursor">
+                    Bilgileri Güncelle
+                  </Link>
+                </li>
+                <li>
+                  <Link className="cursor-pointer" onClick={logOut}>
+                    Çıkış Yap
+                  </Link>
+                </li>
+              </>
+              :
+              <>
+                <li>
+                  <Link to={"/signup"} className="cursor">
+                    Kayıt ol
+                  </Link>
+                </li>
+                <li>
+                  <Link to={"/login"} className="cursor">
+                    Giriş yap
+                  </Link>
+                </li>
+              </>
+            }
+
+
           </ul>
 
           <ul className="flex items-center gap-x-4">
@@ -128,7 +142,7 @@ function Navbar() {
                   alt={item.title}
                   style={{ width: "50px", height: "50px" }}
                 />
-                <p className="mx-1" style={{ width: "200px" }}>{item.title.substring(0,40)}({item.adet})</p>
+                <p className="mx-1" style={{ width: "200px" }}>{item.title.substring(0, 40)}({item.adet})</p>
               </div>
 
               <div className="font-light text-base">{item.price}</div>

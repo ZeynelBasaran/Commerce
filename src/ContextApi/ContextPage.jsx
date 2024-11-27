@@ -6,12 +6,14 @@ import { toast } from "react-toastify";
 const ContextPage = createContext();
 
 //LS'de Eleman varsa basket a ekleyecek.
-const getLS = () => {
+const getLSBasket = () => {
   if (localStorage.getItem("basket")) {
     return JSON.parse(localStorage.getItem("basket"));
   }
   return [];
 };
+
+
 
 //LS ye item ekleme
 const addLocalStorage = (item) => {
@@ -26,14 +28,17 @@ function ContextComp({ children }) {
   const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState("");
 
-  const [userActive, setUserActive] = useState(false);
+  const [userActive, setUserActive] = useState(localStorage.getItem("isActive")|| false);
+
+  
   const [userInfo, setUserInfo] = useState([]);
   const [isVisible, setIsVisible] = useState("hidden");
 
-  const [basket, setBasket] = useState(getLS());
+  const [basket, setBasket] = useState(getLSBasket());
   const [basketPrice, setBasketPrice] = useState(0);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+ 
 
   //Fonksiyon ile sepete eleman ekleme
   const addToBasket = (product) => {

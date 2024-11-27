@@ -8,7 +8,7 @@ import { auth } from "../Firebase"
 import { toast } from 'react-toastify';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from 'react-router';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ContextPage } from '../ContextApi/ContextPage';
 
 
@@ -16,7 +16,7 @@ const provider = new GoogleAuthProvider();
 
 function Login() {
     const navigate = useNavigate()
-    const { setUserActive, setUserInfo, userInfo } = useContext(ContextPage)
+    const { setUserActive, userActive } = useContext(ContextPage)
 
     const signUpWithGoogle = async () => {
         try {
@@ -41,13 +41,11 @@ function Login() {
                 toast.success("Giriş Yapıldı.")
                 navigate("/")
                 setUserActive(true)
+
             }
         } catch (error) {
             toast.error(error.message)
         }
-
-
-
     }
 
     const { values, handleChange, handleSubmit, errors, touched } = useFormik({
@@ -58,6 +56,13 @@ function Login() {
         validationSchema: UserSchemas,
         onSubmit: signUpUser
     })
+
+
+    useEffect(() => {
+        localStorage.setItem("isActive", userActive)
+        console.log(userActive)
+    }, [userActive])
+
 
     return (
         <section className="bg-gray-50 dark:bg-gray-900">

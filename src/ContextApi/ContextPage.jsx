@@ -28,9 +28,8 @@ function ContextComp({ children }) {
   const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState("");
 
-  const [userActive, setUserActive] = useState(localStorage.getItem("isActive")|| false);
+  const [userActive, setUserActive] = useState(localStorage.getItem("userActive") === "true" || false);
 
-  
   const [userInfo, setUserInfo] = useState([]);
   const [isVisible, setIsVisible] = useState("hidden");
 

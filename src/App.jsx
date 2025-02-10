@@ -7,9 +7,8 @@ import Degişimİade from "../src/Compononts/Navbar/degisim-iade";
 import Guvenliİade from "../src/Compononts/Navbar/guvenli-alisveris";
 import HizliGönderi from "../src/Compononts/Navbar/hizli-gonderim";
 import MusteriMemnuniyeti from "../src/Compononts/Navbar/musteri-memnuniyeti";
-import SingUp from "./Pages/SignUp"
-import İnfo from "./Pages/İnfo"
-import Login from "./Pages/Login"
+import SingUp from "./Pages/SignUp";
+import Login from "./Pages/Login";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "./Compononts/Footer";
@@ -38,7 +37,6 @@ function App() {
         <Route path="/product/:id" element={<ProductPage />}></Route>
         <Route path="/basket/product/:id" element={<ProductPage />}></Route>
         <Route path={`/search/:keyword`} element={<Product />}></Route>
-        <Route path="/info" element={<İnfo />}></Route>
         <Route path="/signup" element={<SingUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/" element={<Product />}></Route>

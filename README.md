@@ -1,6 +1,11 @@
-# Kitap Kütüphanesi
+# E- Ticaret Sitesi
+Bu proje, modern bir e-ticaret web sitesi örneğidir. Kullanıcıların ürünleri görüntülemesine, sepete eklemesine ve alışveriş yapmasına olanak tanır. Proje, front-end teknolojileri kullanılarak geliştirilmiştir ve Netlify üzerinde barındırılmaktadır.
+- **Ürün Listeleme:** Kullanıcılar, çeşitli kategorilerdeki ürünleri görüntüleyebilir.
+- **Sepet İşlemleri:** Kullanıcılar, ürünleri sepete ekleyebilir, sepeti görüntüleyebilir ve düzenleyebilir.
+- **Kullanıcı Dostu Arayüz:** Temiz ve modern bir tasarım ile kullanıcıların kolayca gezinmesi sağlanmıştır.
+- **Responsive Tasarım:** Web sitesi, mobil ve tablet cihazlarda da sorunsuz çalışacak şekilde tasarlanmıştır.
+- **User İşlemleri:** Firebase entegrasyonu ile kullanıcılar Google hesabıyla kayıt olup giriş ve çıkış işlemleri yapabilir.
 
-E-Ticaret web sitesi
 
 ## Kullanılan Teknolojiler
 

@@ -30,7 +30,7 @@ export default function Basket() {
   }
 
   return (
-    <div className=" dark:bg-gray-900 dark:text-white p-4">
+    <div className="flex-grow dark:bg-gray-900 dark:text-white p-4">
       <section className="container bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
         <div className="mx-auto  px-4 2xl:px-0">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Sepetteki Ürünler</h2>

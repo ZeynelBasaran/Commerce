@@ -53,8 +53,11 @@ function ProductPage() {
         <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
             <Slide>
-              {images?.map((item,i) => (
-                <div key={`${item.title}a`} className="shrink-0 max-w-md lg:max-w-lg mx-auto">
+              {images?.map((item, i) => (
+                <div
+                  key={`${item.title}a`}
+                  className="shrink-0 max-w-md lg:max-w-lg mx-auto"
+                >
                   <img className="w-full dark:hidden" src={item} alt="" />
                   <img className="w-full hidden dark:block" src={item} alt="" />
                 </div>
@@ -128,7 +131,7 @@ function ProductPage() {
                   href="#"
                   className="text-sm font-medium leading-none text-gray-900  dark:text-white"
                 >
-                  {reviews?.length} Yorum{" "}
+                  {reviews?.length} Yorum
                 </a>
               </div>
             </div>

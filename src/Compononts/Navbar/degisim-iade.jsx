@@ -2,7 +2,7 @@ import React from 'react'
 
 function degisimiade() {
   return (
-    <div className=' text-justify bg-gray-50 dark:bg-gray-900 dark:text-white '>
+    <div className='flex-grow text-justify bg-gray-50 dark:bg-gray-900 dark:text-white '>
       <div className='container'>
       <div className='py-6'>
         <h5 className='font-bold'>Ürün değişimi / iadesi yapabilirmiyim?</h5>

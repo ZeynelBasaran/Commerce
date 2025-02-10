@@ -2,7 +2,7 @@ import React from 'react'
 
 function musterimemnuniyeti() {
     return (
-        <div className=' text-justify bg-gray-50 dark:bg-gray-900 dark:text-white'>
+        <div className='flex-grow text-justify bg-gray-50 dark:bg-gray-900 dark:text-white'>
             <div className="container">
             <h5 className='font-bold text-center'> MÜŞTERİ MEMNUNİYET POLİTİKAMIZ
             </h5>

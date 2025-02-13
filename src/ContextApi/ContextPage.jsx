@@ -1,8 +1,8 @@
-import axios from "axios";
+import { useEffect } from "react";
 import { createContext, useState } from "react";
 import React from "react";
 import { toast } from "react-toastify";
-
+import { getCategories } from "../Services/ApiService";
 const ContextPage = createContext();
 
 //LS'de Eleman varsa basket a ekleyecek.
@@ -54,6 +54,7 @@ function ContextComp({ children }) {
       });
       setBasket(newArr);
       addLocalStorage(newArr);
+      toast("Ürün Sepete Eklendi.");
     } else {
       setBasket((prev) => [...prev, { ...product, adet: 1 }]);
       addLocalStorage([...basket, { ...product, adet: 1 }]);
@@ -70,6 +71,7 @@ function ContextComp({ children }) {
       .filter((item) => item.adet > 0);
     setBasket(removeItem);
     addLocalStorage(removeItem);
+    toast("1 Adet Ürün Sepetten Çıkarıldı.");
   };
 
   const removeItemFromBasket = (product) => {
@@ -88,6 +90,19 @@ function ContextComp({ children }) {
     setBasketPrice(toplam);
   };
 
+
+  useEffect(()=>{
+    const getCat = async () => {
+    try {
+      const category = await getCategories()
+      setCategories(category)
+    } catch (error) {
+      console.error("getCategories Hatası", error)
+    }
+  }
+    getCat()
+  },[])
+  
   return (
     <ContextPage.Provider
       value={{

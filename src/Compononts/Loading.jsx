@@ -4,7 +4,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 export default function LinearIndeterminate() {
   return (
-    <Box sx={{ width: '100%',marginTop:"200px",padding:"100px"}}>
+    <Box className="flex-grow" sx={{ width: '100%',marginTop:"200px",padding:"100px"}}>
       <LinearProgress />
     </Box>
   );

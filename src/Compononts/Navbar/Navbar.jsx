@@ -46,6 +46,7 @@ function Navbar() {
     setUserInfo([]);
     navigate("/login");
     toast.success("Çıkış Yapıldı.");
+    
   };
 
   const changeTheme = () => {
@@ -156,7 +157,7 @@ function Navbar() {
             >
               <div className="flex items-center">
                 <img
-                  src={item.images}
+                  src={item.images[0]}
                   alt={item.title}
                   style={{ width: "50px", height: "50px" }}
                 />

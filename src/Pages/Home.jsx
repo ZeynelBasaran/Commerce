@@ -1,22 +1,18 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import ProductCard from "../Compononts/ProductsCard";
 import { ContextPage } from "../ContextApi/ContextPage";
 import Loading from "../Compononts/Loading"
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase";
 import Filter from "../Compononts/Filter";
-import { getData,getCategories } from "../Services/ApiService";
+import { getData, getCategories } from "../Services/ApiService";
+import Hero from "../Compononts/Hero";
+import { useCallback } from "react";
 
 
 
-
-
-
-
-
-
-function Products() {
-  const { products, loading, basket, setUserInfo, userInfo, userActive, setProducts, setLoading, totalAmount,setCategories } = useContext(ContextPage);
+export default function Home() {
+  const { products, loading, basket, setUserInfo, userInfo, userActive, setProducts, setLoading, totalAmount, setCategories } = useContext(ContextPage);
 
 
 
@@ -28,26 +24,25 @@ function Products() {
     })
   }
 
-  const fetchData = async () => {
-    try {
-      const data = await getData()
-      const category = await getCategories()
-      setProducts(data.products)
-      setCategories(category)
-      setLoading(false)
-    } catch (error) {
-      console.error("getData Hatası", error)
-    }
-  }
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getData();
+        setProducts(data.products);
+        setLoading(false);
+      } catch (error) {
+        console.error("getData Hatası", error);
+      }
+    };
+  
+    fetchData();
+  }, []);
 
 
   useEffect(() => {
-    fetchData()
     getUserİnfo()
-    totalAmount();
     localStorage.setItem("userActive", userActive)
-  }, [basket, userActive]);
+  }, [userActive])
 
 
 
@@ -60,6 +55,7 @@ function Products() {
       <div className="">
         {userActive && <h1 className="container text-center p-2">Hoşgeldiniz Sayın {userInfo.displayName} Alışverişe Başlayabilirsiniz.</h1>}
       </div>
+      <Hero randomNumber={2} />
       <div className="dark:bg-gray-900 dark:text-black p-4 ">
         <div className="container flex-col sm:flex sm:flex-row flex gap-2">
           <Filter className="" />
@@ -76,8 +72,6 @@ function Products() {
 
   );
 }
-
-export default Products;
 
 
 

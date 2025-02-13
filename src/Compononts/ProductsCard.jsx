@@ -36,7 +36,7 @@ export default function ProductCard({ product }) {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-sm font-bold text-gray-900 ">{price} $</span>
-          <button onClick={handleClick} className=" bg-pink-700 text-white hover:bg-pink-800  focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800	cursor-pointer focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center	">Sepete Ekle</button>
+          <button onClick={handleClick} className="	cursor-pointer     text-sm  rounded-lg text-white bg-pink-700 px-5 py-2.5 font-medium hover:bg-pink-800 focus:outline-none focus:ring-4 focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800	">Sepete Ekle</button>
         </div>
       </div>
     </div>

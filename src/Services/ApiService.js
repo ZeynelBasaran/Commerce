@@ -12,9 +12,9 @@ export const getData = async () => {
   }
 };
 
-export const getDataiById = async (id) => {
+export const getDataById = async (id) => {
   try {
-    const response = await axios.get(BASE_URL+id);
+    const response = await axios.get(BASE_URL+"/"+id);
     return response.data;
     
   } catch (error) {
@@ -25,7 +25,7 @@ export const getDataiById = async (id) => {
 export const getCategories = async () => {
   try {
     const response = await axios.get(
-      `${BASE_URL}categories`
+      `${BASE_URL}/categories`
     );
     return response.data;
   } catch (error) {
@@ -36,7 +36,7 @@ export const getCategories = async () => {
 export const getCategoriesPagesData = async (category) => {
   try {
     const response = await axios.get(
-      `${BASE_URL}category/${category}`
+      `${BASE_URL}/category/${category}`
     );
     return response.data;
   } catch (error) {

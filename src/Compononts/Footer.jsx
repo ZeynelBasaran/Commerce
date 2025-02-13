@@ -9,10 +9,10 @@ function Footer() {
             <div className="mx-auto container">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
-                        <a href="https://flowbite.com" className="flex items-center">
+                        <Link to={"/"}  className="flex items-center">
                             <img src={Logo} className="mr-3 h-8" alt="FlowBite Logo" />
                             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">HızlıAl.com</span>
-                        </a>
+                        </Link>
                     </div>
                     <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div>

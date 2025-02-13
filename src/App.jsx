@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Compononts/Navbar/Navbar";
 import Basket from "./Pages/Basket";
-import Product from "./Pages/Home";
+import Home from "./Pages/Home";
 import ProductPage from "./Pages/ProductPage";
 import Degişimİade from "../src/Compononts/Navbar/degisim-iade";
 import Guvenliİade from "../src/Compononts/Navbar/guvenli-alisveris";
@@ -35,11 +35,11 @@ function App() {
        
         <Route path="/basket" element={<Basket />}></Route>
         <Route path="/product/:id" element={<ProductPage />}></Route>
-        <Route path="/basket/product/:id" element={<ProductPage />}></Route>
-        <Route path={`/search/:keyword`} element={<Product />}></Route>
+        <Route path="/product/:id" element={<ProductPage />}></Route>
+        <Route path={`/search/:keyword`} element={<Home />}></Route>
         <Route path="/signup" element={<SingUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/" element={<Product />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="*" element={<Error />}></Route>
 
       </Routes>

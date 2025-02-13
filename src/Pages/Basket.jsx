@@ -68,7 +68,7 @@ export default function Basket() {
                       </div>
 
                       <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                        <a onClick={() => navigate("product/" + item.id)} className="text-base font-medium text-gray-900 hover:underline dark:text-white cursor-pointer">{item.title}</a>
+                        <a onClick={() => navigate("/product/" + item.id)} className="text-base font-medium text-gray-900 hover:underline dark:text-white cursor-pointer">{item.title}</a>
 
                         <div className="flex gap-4">
                           <button onClick={() => { removeItemBtn(item) }} type="button" className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500 item-cursor">
@@ -135,8 +135,3 @@ export default function Basket() {
 
 
 
-
-/*
-
-
-*/

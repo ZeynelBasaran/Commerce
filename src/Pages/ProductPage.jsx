@@ -3,25 +3,23 @@ import { useParams } from "react-router";
 import { ContextPage } from "../ContextApi/ContextPage";
 import Rating from "../Compononts/Rating";
 import Comments from "../Compononts/Comments";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Loading from "../Compononts/Loading";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
-import { getDataiById } from "../Services/ApiService";
+import { getDataById } from "../Services/ApiService";
 
 function ProductPage() {
   const { id } = useParams();
-  const { addToBasket, decreaseFromBasket, loading, setLoading } =
+  const { addToBasket, loading, setLoading } =
     useContext(ContextPage);
   const [product, setProduct] = useState({});
 
   const fetchData = async (id) => {
     try {
       setLoading(true);
-      const data = await getDataiById(id);
+      const data = await getDataById(id);
       setProduct(data);
     } catch (error) {
       console.error("getDataItem Hatası", error);
@@ -34,11 +32,9 @@ function ProductPage() {
     fetchData(id);
   }, [id]);
 
-  const { title, images, description, price, rating, stock, reviews } = product;
+  const { title, images, description, price, rating, reviews } = product;
 
-  const decreaseItemBtn = () => {
-    decreaseFromBasket(product);
-  };
+  
   const increaseItemBtn = () => {
     addToBasket(product);
   };
@@ -49,11 +45,11 @@ function ProductPage() {
 
   return (
     <>
-      <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased ">
-        <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <section className="container max-w-screen-xl py-8 bg-white md:py-16 dark:bg-gray-900 antialiased ">
+        <div className=" px-4 mx-auto 2xl:px-0 ">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
             <Slide>
-              {images?.map((item, i) => (
+              {images?.map((item) => (
                 <div
                   key={`${item.title}a`}
                   className="shrink-0 max-w-md lg:max-w-lg mx-auto"
@@ -94,7 +90,7 @@ function ProductPage() {
                   onClick={increaseItemBtn}
                   href="#"
                   title=""
-                  className="flex items-center justify-center py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                  className="flex items-center justify-center rounded-lg text-white bg-pink-700 px-5 py-2.5 text-sm font-medium hover:bg-pink-800 focus:outline-none focus:ring-4 focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 "
                   role="button"
                 >
                   <AddShoppingCartIcon />

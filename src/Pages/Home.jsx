@@ -1,20 +1,18 @@
 import React, { useEffect, useContext, useState } from "react";
-import ProductCard from "../Compononts/ProductsCard";
+import ProductCards from "../Compononts/ProductsCard";
 import { ContextPage } from "../ContextApi/ContextPage";
 import Loading from "../Compononts/Loading"
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase";
 import Filter from "../Compononts/Filter";
-import { getData, getCategories } from "../Services/ApiService";
+import { useProducts, useCategoryData } from "../Services/ApiService";
 import Hero from "../Compononts/Hero";
-import { useCallback } from "react";
+import { all } from "axios";
 
 
 
 export default function Home() {
-  const { products, loading, basket, setUserInfo, userInfo, userActive, setProducts, setLoading, totalAmount, setCategories } = useContext(ContextPage);
-
-
+  const { setUserInfo, userInfo, userActive } = useContext(ContextPage);
 
   const getUserİnfo = () => {
     onAuthStateChanged(auth, (userCredential) => {
@@ -25,47 +23,26 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getData();
-        setProducts(data.products);
-        setLoading(false);
-      } catch (error) {
-        console.error("getData Hatası", error);
-      }
-    };
-  
-    fetchData();
-  }, []);
-
-
-  useEffect(() => {
     getUserİnfo()
     localStorage.setItem("userActive", userActive)
   }, [userActive])
 
-
-
-  if (loading) {
-    return <Loading />
-  }
+  
 
   return (
-    <main className="flex-grow  bg-white dark:bg-gray-900 text-black dark:text-white">
-      <div className="">
+    <main className="flex-grow bg-white dark:bg-gray-900 text-black dark:text-white py-4">
+      <section className="container">
         {userActive && <h1 className="container text-center p-2">Hoşgeldiniz Sayın {userInfo.displayName} Alışverişe Başlayabilirsiniz.</h1>}
-      </div>
-      <Hero randomNumber={2} />
-      <div className="dark:bg-gray-900 dark:text-black p-4 ">
-        <div className="container flex-col sm:flex sm:flex-row flex gap-2">
-          <Filter className="" />
-          <div className="flex flex-wrap justify-center sm:justify-between gap-2">
-            {products?.map((product, index) => (
-              <ProductCard key={`${index}pro`} product={product} />
-            ))}
-          </div>
-        </div>
-      </div>
+      </section>
+      
+      <Hero />
+      <section className="container grid grid-col-6  md:grid-cols-12 gap-4">
+       
+          <Filter />
+          <ProductCards />
+      
+      </section>
+
 
 
     </main>
@@ -73,5 +50,8 @@ export default function Home() {
   );
 }
 
+/*
 
+
+*/
 

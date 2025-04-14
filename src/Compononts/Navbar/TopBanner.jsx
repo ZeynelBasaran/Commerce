@@ -15,7 +15,7 @@ const links = [
 
 function Banner() {
     return (
-        <div className="banner dark:text-white dark:bg-pink-600">
+        <div className="bg-[#B6A58F] text-[#666666] p-[7px] text-[0.8rem] dark:text-white dark:bg-pink-600">
             <ul className="container grid grid-cols-2 md:grid-cols-4 gap-2">
                 {links.map(({ to, icon, text }) => (
                     <li key={to}>

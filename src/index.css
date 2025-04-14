@@ -2,25 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-.btn1 {
-  background-color: #faaf00;
-}
 
-.banner{
-  background-color: #B6A58F;
-  color: #666666;
-  padding: 7px;
-  font-size: 0.8rem;
+
+body {
+ 
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
 }

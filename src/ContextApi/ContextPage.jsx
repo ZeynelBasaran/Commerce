@@ -2,42 +2,41 @@ import { useEffect } from "react";
 import { createContext, useState } from "react";
 import React from "react";
 import { toast } from "react-toastify";
-import { getCategories } from "../Services/ApiService";
+
 const ContextPage = createContext();
 
-//LS'de Eleman varsa basket a ekleyecek.
-const getLSBasket = () => {
-  if (localStorage.getItem("basket")) {
-    return JSON.parse(localStorage.getItem("basket"));
-  }
-  return [];
+
+
+const getFromLocalStorage = (key, defaultValue = []) => {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : defaultValue;
 };
 
 
-
-//LS ye item ekleme
-const addLocalStorage = (item) => {
-  localStorage.setItem("basket", JSON.stringify(item));
+const setToLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
 };
+
 
 function ContextComp({ children }) {
   const [isDarkMode, setİsDarkMode] = useState(() => {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
-  const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState("");
-
   const [userActive, setUserActive] = useState(localStorage.getItem("userActive") === "true" || false);
 
   const [userInfo, setUserInfo] = useState([]);
-  const [isVisible, setIsVisible] = useState("hidden");
+  const [isVisible, setIsVisible] = useState("");
 
-  const [basket, setBasket] = useState(getLSBasket());
   const [basketPrice, setBasketPrice] = useState(0);
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
- 
+  const [filter, setFilter] = useState([])
+
+
+  //Sepet ve Favoriler için localStorage'dan veri çekiyoruz.
+  const [basket, setBasket] = useState(() => getFromLocalStorage("basket"));
+  const [favorites, setFavorites] = useState(() => getFromLocalStorage("favorites"));
+
 
   //Fonksiyon ile sepete eleman ekleme
   const addToBasket = (product) => {
@@ -53,11 +52,11 @@ function ContextComp({ children }) {
           : item;
       });
       setBasket(newArr);
-      addLocalStorage(newArr);
+      setToLocalStorage("basket", newArr);
       toast("Ürün Sepete Eklendi.");
     } else {
       setBasket((prev) => [...prev, { ...product, adet: 1 }]);
-      addLocalStorage([...basket, { ...product, adet: 1 }]);
+      setToLocalStorage("basket", [...basket, { ...product, adet: 1 }]);
       toast("Ürün Sepete Eklendi.");
     }
   };
@@ -70,14 +69,14 @@ function ContextComp({ children }) {
       })
       .filter((item) => item.adet > 0);
     setBasket(removeItem);
-    addLocalStorage(removeItem);
+    setToLocalStorage("basket", removeItem);
     toast("1 Adet Ürün Sepetten Çıkarıldı.");
   };
 
   const removeItemFromBasket = (product) => {
     const filterList = basket.filter((items) => items.id !== product.id);
     setBasket(filterList);
-    addLocalStorage(filterList);
+    setToLocalStorage("basket", filterList);
     toast("Ürün Sepetten kaldırıldı.");
   };
 
@@ -90,37 +89,36 @@ function ContextComp({ children }) {
     setBasketPrice(toplam);
   };
 
+  const toggleFavorite = (id) => {
+    setFavorites((prevFavorites) => {
+      let updatedFavorites;
+      // Eğer ürün favorilerde varsa çıkar
+      if (prevFavorites.find((productID) => productID === id)) {
+        updatedFavorites = prevFavorites.filter(
+          (productID) => productID !== id
+        );
+      } else {
+        // Yeni bir favori eklerken önceki state'i koruyoruz
+        updatedFavorites = [...prevFavorites, id];
+      }
 
-  useEffect(()=>{
-    const getCat = async () => {
-    try {
-      const category = await getCategories()
-      setCategories(category)
-    } catch (error) {
-      console.error("getCategories Hatası", error)
-    }
-  }
-    getCat()
-  },[])
-  
+      setToLocalStorage("favorites", updatedFavorites);
+      return updatedFavorites;
+    });
+  };
+
   return (
     <ContextPage.Provider
       value={{
         basket,
         addToBasket,
         decreaseFromBasket,
-        products,
-        loading,
-        setLoading,
         removeItemFromBasket,
-        addLocalStorage,
+
         userActive,
         setUserActive,
         userInfo,
         setUserInfo,
-        setProducts,
-        setCategories,
-        categories,
         isDarkMode,
         setİsDarkMode,
         setBasket,
@@ -130,6 +128,7 @@ function ContextComp({ children }) {
         setIsVisible,
         searchValue,
         setSearchValue,
+        filter, setFilter, favorites, setFavorites, toggleFavorite
       }}
     >
       {children}
@@ -137,5 +136,5 @@ function ContextComp({ children }) {
   );
 }
 
-export default ContextComp; //Provider Compo exportu
-export { ContextPage }; //ContextExportu
+export default ContextComp;
+export { ContextPage }; 

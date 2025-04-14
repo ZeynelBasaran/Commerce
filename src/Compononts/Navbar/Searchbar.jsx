@@ -11,17 +11,10 @@ import { useNavigate } from 'react-router';
 
 
 function Searchbar() {
-    const { setProducts, setLoading, products, searchValue, setSearchValue } = useContext(ContextPage);
-
-
+    const { setProducts, setLoading, searchValue, setSearchValue } = useContext(ContextPage);
     const navigate = useNavigate()
 
-    /*
-    useEffect(() => {
 
-    }, [])
-
-    */
 
 
 

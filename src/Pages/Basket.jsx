@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ContextPage } from "../ContextApi/ContextPage";
 import { useContext } from "react";
-import { useNavigate,useParams } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useEffect } from "react";
 
 

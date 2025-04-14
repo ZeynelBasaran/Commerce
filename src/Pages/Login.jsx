@@ -42,7 +42,6 @@ function Login() {
         values.password
       );
       response.user;
-      console.log(response);
       if (response.user) {
         toast.success("Giriş Yapıldı.");
         navigate("/");
@@ -67,8 +66,8 @@ function Login() {
   }, [userActive]);
 
   return (
-    <section className="flex-grow bg-gray-50 dark:bg-gray-900 flex items-center justify-center py-8">
-      <div className="flex flex-col  px-6 py-8 mx-auto  lg:py-10">
+    <section className="flex flex-grow bg-gray-50 dark:bg-gray-900 items-center justify-center py-8">
+      <div className="flex flex-col px-6 py-8 mx-auto lg:py-10">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-12 md:space-y-6 sm:p-16">
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">

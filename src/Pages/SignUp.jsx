@@ -52,8 +52,8 @@ function User() {
   });
 
   return (
-    <section className="flex-grow flex items-center justify-center bg-gray-50 dark:bg-gray-900 ">
-      <div className="flex flex-col  px-6 py-8 mx-auto ">
+    <section className="flex flex-grow  items-center justify-center bg-gray-50 dark:bg-gray-900 ">
+      <div className="flex flex-col px-6 py-8 mx-auto ">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-12 md:space-y-6 sm:p-16">
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -158,29 +158,4 @@ function User() {
 
 export default User;
 
-/*
-        <section className='dark:bg-gray-900 dark:text-black p-4'>
-            <div className='container register p-6'>
-            <form onSubmit={handleSubmit}>
-                <h5>Kayıt Ol</h5>
-                <div className='my-4'>
-                    <label>Mail</label>
-                    <input type="mail" className='register-inp' placeholder='Lütfen mail giriniz...' name='mail' id='mail' value={values.mail} onChange={handleChange} />
-                    {touched.mail && errors.mail && <p className='register-error'>{errors.mail}</p>}
-                </div>
-                <div className='my-4'>
-                    <label>Şifre</label>
-                    <input type="password" className='register-inp' placeholder='Şifrenizi girin.' name='password' id='password' value={values.password} onChange={handleChange} />
-                    {touched.password && errors.password && <p className='register-error'>{errors.password}</p>}
-                </div>
 
-                <div className='flex flex-col gap-y-4'>
-                    <Button variant="contained" className=' bg-pink-700 text-white hover:bg-pink-800  focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800' type='submit' >Kayıt Ol</Button>
-                    
-                    <Button variant="contained" className=' bg-pink-700 text-white hover:bg-pink-800  focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800' startIcon={<GoogleIcon />} >Google ile kayıt ol</Button>
-                </div>
-
-            </form>
-            </div>
-        </section>
-*/

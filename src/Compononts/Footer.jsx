@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
     return (
-
         <footer className="p-4  bg-gray-50 sm:p-6 dark:bg-gray-800 dark:border-t-2 border-t-2 border-white dark:border-white">
             <div className="mx-auto container">
                 <div className="md:flex md:justify-between">
@@ -67,9 +66,6 @@ function Footer() {
                 </div>
             </div>
         </footer>
-
-
-
 
     )
 }

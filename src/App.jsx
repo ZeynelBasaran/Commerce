@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./Compononts/Navbar/Navbar";
 import Basket from "./Pages/Basket";
 import Home from "./Pages/Home";
-import ProductPage from "./Pages/ProductPage";
+import ProductDetailPage from "./Pages/ProductDetailPage";
 import Degişimİade from "../src/Compononts/Navbar/degisim-iade";
 import Guvenliİade from "../src/Compononts/Navbar/guvenli-alisveris";
 import HizliGönderi from "../src/Compononts/Navbar/hizli-gonderim";
@@ -22,7 +22,7 @@ import Error from "./Compononts/Error";
 function App() {
 
   return (
-    <>
+    <main className="flex flex-col min-h-screen">
       <Navbar />
       <Routes >
         {/* Top Banner  */}
@@ -34,8 +34,7 @@ function App() {
         {/* Pages */}
        
         <Route path="/basket" element={<Basket />}></Route>
-        <Route path="/product/:id" element={<ProductPage />}></Route>
-        <Route path="/product/:id" element={<ProductPage />}></Route>
+        <Route path="/product/:id" element={<ProductDetailPage />}></Route>
         <Route path={`/search/:keyword`} element={<Home />}></Route>
         <Route path="/signup" element={<SingUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -57,12 +56,9 @@ function App() {
       />
       <ToastContainer />
       <Footer />
-    </>
+    </main>
   );
 }
 
 export default App;
 
-/*
-<Route path="/basket/product/:id" element={<ProductPage />}></Route>
-*/

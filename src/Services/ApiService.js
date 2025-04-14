@@ -1,46 +1,49 @@
-import axios from "axios";
 
-const BASE_URL = `${import.meta.env.VITE_APP_BASE_URL}`
+import { useQuery } from '@tanstack/react-query';
+import { fetchProducts,fetchCategories,fetchCategoryData,fetchProductById } from '../api/product';
 
-
-export const getData = async () => {
-  try {
-    const response = await axios.get(BASE_URL);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+export const useProducts = () => {
+  return useQuery({
+    queryKey: ['products'],
+    queryFn: fetchProducts,
+    staleTime: 1000 * 60 * 5,     // 5 dakika boyunca veri "taze" Cache işlemleri
+    cacheTime: 1000 * 60 * 10,    // 10 dakika bellekte sakla
+  });
 };
 
-export const getDataById = async (id) => {
-  try {
-    const response = await axios.get(BASE_URL+"/"+id);
-    return response.data;
-    
-  } catch (error) {
-    throw error;
-  }
+export const useProductById = (id) => {
+  return useQuery({
+    queryKey: ['product',id],
+    queryFn: () => fetchProductById(id),
+    enabled: !!id, // id varsa sorguyu çalıştır
+    staleTime: 1000 * 60 * 5,     
+  });
 };
 
-export const getCategories = async () => {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}/categories`
-    );
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+export const useCategory = () => {
+  return useQuery({
+    queryKey: ['/products/categories'],
+    queryFn: fetchCategories,
+    staleTime: 1000 * 60 * 5,  
+    cacheTime: 1000 * 60 * 10,    
+  });
 };
 
-export const getCategoriesPagesData = async (category) => {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}/category/${category}`
-    );
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+export const useCategoryData = (category) => {
+  return useQuery({
+    queryKey: ['category',category],
+    queryFn: () => fetchCategoryData(category),
+    enabled: category.length > 0, 
+    staleTime: 1000 * 60 * 5, // 5 dakika boyunca veriyi taze tut
+  });
 };
+
+
+
+
+
+
+
+
+
 

@@ -6,7 +6,7 @@ import Rating from "./Rating";
 import { useProducts, useCategoryData } from "../Services/ApiService";
 import Loading from "./Loading"
 import { useState,useMemo } from "react";
-import FavoriteBar from "./favorite";
+import FavoriteBar from "./Favorite";
 
 
 

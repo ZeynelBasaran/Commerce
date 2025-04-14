@@ -92,10 +92,6 @@ export default function ProductCards() {
 }
 
 
-/*
-
-
-*/
 
 
 

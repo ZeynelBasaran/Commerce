@@ -1,12 +1,12 @@
 import React, { useEffect, useContext, useState } from "react";
-import ProductCards from "../Compononts/ProductsCard";
+import ProductCards from "../Components/ProductsCard";
 import { ContextPage } from "../ContextApi/ContextPage";
-import Loading from "../Compononts/Loading"
+import Loading from "../Components/Loading"
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase";
-import Filter from "../Compononts/Filter";
+import Filter from "../Components/Filter";
 import { useProducts, useCategoryData } from "../Services/ApiService";
-import Hero from "../Compononts/Hero";
+import Hero from "../Components/Hero";
 import { all } from "axios";
 
 

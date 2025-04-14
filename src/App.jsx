@@ -1,18 +1,18 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./Compononts/Navbar/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import Basket from "./Pages/Basket";
 import Home from "./Pages/Home";
 import ProductDetailPage from "./Pages/ProductDetailPage";
-import Degişimİade from "../src/Compononts/Navbar/degisim-iade";
-import Guvenliİade from "../src/Compononts/Navbar/guvenli-alisveris";
-import HizliGönderi from "../src/Compononts/Navbar/hizli-gonderim";
-import MusteriMemnuniyeti from "../src/Compononts/Navbar/musteri-memnuniyeti";
+import Degişimİade from "../src/Components/Navbar/degisim-iade";
+import Guvenliİade from "../src/Components/Navbar/guvenli-alisveris";
+import HizliGönderi from "../src/Components/Navbar/hizli-gonderim";
+import MusteriMemnuniyeti from "../src/Components/Navbar/musteri-memnuniyeti";
 import SingUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from "./Compononts/Footer";
-import Error from "./Compononts/Error";
+import Footer from "./Components/Footer";
+import Error from "./Components/Error";
 
 
 

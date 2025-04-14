@@ -1,5 +1,5 @@
 import React from 'react'
-import Rating from "../Compononts/Rating"
+import Rating from "../Components/Rating"
 
 function Comments({ item }) {
   return (

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { ContextPage } from "../ContextApi/ContextPage";
-import Rating from "../Compononts/Rating";
-import Comments from "../Compononts/Comments";
+import Rating from "../Components/Rating";
+import Comments from "../Components/Comments";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import Loading from "../Compononts/Loading";
+import Loading from "../Components/Loading";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { useProductById } from "../Services/ApiService";

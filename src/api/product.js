@@ -31,3 +31,7 @@ export const fetchCategoryData = async (category) => {
   return results.flat();
 };
 
+export const searchInputValue = async (value) => {
+  const res = await axios.get(`${BASE_URL}/products/search?q=${value}`);
+  return res.data.products;
+};

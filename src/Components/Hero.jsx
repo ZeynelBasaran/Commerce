@@ -53,16 +53,9 @@ export default function Hero() {
             </a>
           </div>
         </div>
-
-
-
         <div className="col-span-12 md:col-span-5 md:mt-0 md:flex">
           <img className="object-cover" src={images[0]} />
         </div>
-
-
-
-
       </div >
 
     </section >

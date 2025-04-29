@@ -6,13 +6,12 @@ import { toast } from "react-toastify";
 const ContextPage = createContext();
 
 
-
+//LocalStorage'dan veri çekmek için fonksiyon
 const getFromLocalStorage = (key, defaultValue = []) => {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : defaultValue;
 };
-
-
+//LocalStorage'da veri saklamak için fonksiyon
 const setToLocalStorage = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
@@ -27,10 +26,12 @@ function ContextComp({ children }) {
   const [userActive, setUserActive] = useState(localStorage.getItem("userActive") === "true" || false);
 
   const [userInfo, setUserInfo] = useState([]);
-  const [isVisible, setIsVisible] = useState("");
+
 
   const [basketPrice, setBasketPrice] = useState(0);
   const [filter, setFilter] = useState([])
+  const [sortOrder, setSortOrder] = useState("sırala");
+
 
 
   //Sepet ve Favoriler için localStorage'dan veri çekiyoruz.
@@ -110,11 +111,11 @@ function ContextComp({ children }) {
   return (
     <ContextPage.Provider
       value={{
+        sortOrder, setSortOrder,
         basket,
         addToBasket,
         decreaseFromBasket,
         removeItemFromBasket,
-
         userActive,
         setUserActive,
         userInfo,
@@ -124,8 +125,6 @@ function ContextComp({ children }) {
         setBasket,
         basketPrice,
         totalAmount,
-        isVisible,
-        setIsVisible,
         searchValue,
         setSearchValue,
         filter, setFilter, favorites, setFavorites, toggleFavorite

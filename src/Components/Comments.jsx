@@ -5,7 +5,7 @@ function Comments({ item }) {
   return (
     <>
       <hr className='' />
-      <div className=" mt-6 divide-y divide-gray-200 dark:divide-gray-700 ">
+      <div className="w-full mt-6 divide-y divide-gray-200 dark:divide-gray-700 ">
         <div className="gap-3 pb-6 sm:flex sm:items-start">
           <div className="shrink-0 space-y-2 sm:w-48 md:w-72 ">
             
@@ -45,4 +45,4 @@ function Comments({ item }) {
   )
 }
 
-export default Comments
+export default Comments;

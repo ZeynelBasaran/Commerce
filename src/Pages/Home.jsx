@@ -1,13 +1,11 @@
 import React, { useEffect, useContext, useState } from "react";
 import ProductCards from "../Components/ProductsCard";
 import { ContextPage } from "../ContextApi/ContextPage";
-import Loading from "../Components/Loading"
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase";
 import Filter from "../Components/Filter";
-import { useProducts, useCategoryData } from "../Services/ApiService";
 import Hero from "../Components/Hero";
-import { all } from "axios";
+
 
 
 
@@ -34,24 +32,14 @@ export default function Home() {
       <section className="container">
         {userActive && <h1 className="container text-center p-2">Hoşgeldiniz Sayın {userInfo.displayName} Alışverişe Başlayabilirsiniz.</h1>}
       </section>
-      
       <Hero />
       <section className="container grid grid-col-6  md:grid-cols-12 gap-4">
-       
           <Filter />
           <ProductCards />
-      
       </section>
-
-
-
     </main>
 
   );
 }
 
-/*
-
-
-*/
 

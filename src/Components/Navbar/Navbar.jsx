@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import Badge from "../Badge";
 import { Link, useNavigate } from "react-router-dom";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -9,10 +9,12 @@ import Banner from "./TopBanner";
 import Logo from "/Public/1.webp";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
-import Searchbar from "./Searchbar";
+import SearchBar from "./Searchbar";
 import { ContextPage } from "../../ContextApi/ContextPage";
 import MenuIcon from "@mui/icons-material/Menu";
 import { toast } from "react-toastify";
+import { FaRegUser } from "react-icons/fa";
+
 
 function Navbar() {
   const {
@@ -23,8 +25,6 @@ function Navbar() {
     userActive,
     setUserInfo,
     basketPrice,
-    isVisible,
-    setIsVisible,
     removeItemFromBasket,
   } = useContext(ContextPage);
 
@@ -46,12 +46,10 @@ function Navbar() {
     setUserInfo([]);
     navigate("/login");
     toast.success("Çıkış Yapıldı.");
-    
+
   };
 
-  const changeTheme = () => {
-    setİsDarkMode(!isDarkMode);
-  };
+
 
   const formatToCurrency = (num) => {
     // Sayıyı virgülden sonra 2 basamakla sınırlayıp USD simgesi ekler ve binlik ayraç kullanır
@@ -72,7 +70,7 @@ function Navbar() {
         <div className="flex justify-between container">
           <ul className="flex gap-x-4 items-center py-2">
             <li>
-              <Link to={"/"} className="cursor">
+              <Link to={"/"} className="cursor-pointer">
                 <img src={Logo} alt="" width={80} />
               </Link>
             </li>
@@ -94,13 +92,13 @@ function Navbar() {
             ) : (
               <>
                 <li>
-                  <Link to={"/signup"} className="cursor">
+                  <Link to={"/signup"} className="cursor-pointer">
                     Kayıt ol
                   </Link>
                 </li>
-                <li>
-                  <Link to={"/login"} className="cursor">
-                    Giriş yap
+                <li className="">
+                  <Link to={"/login"} className="cursor-pointer flex gap-x-2">
+                    <FaRegUser size={20} className="block"/> Giriş Yap
                   </Link>
                 </li>
               </>
@@ -109,18 +107,18 @@ function Navbar() {
 
           <ul className="flex items-center gap-x-4">
             <li className="">
-              <Searchbar />
+              <SearchBar />
             </li>
             <li className="hidden sm:block">
               {isDarkMode ? (
                 <LightModeIcon
                   className="cursor-pointer"
-                  onClick={changeTheme}
+                  onClick={() => { setİsDarkMode(!isDarkMode) }}
                 />
               ) : (
                 <DarkModeIcon
                   className="cursor-pointer "
-                  onClick={changeTheme}
+                  onClick={() => { setİsDarkMode(!isDarkMode) }}
                 />
               )}
             </li>
@@ -132,9 +130,7 @@ function Navbar() {
             </li>
             <li className="cursor-pointer sm:hidden">
               <MenuIcon
-                onClick={() => {
-                  setIsVisible(isVisible === "" ? "hidden" : "");
-                }}
+               
               />
             </li>
           </ul>

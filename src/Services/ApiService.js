@@ -1,6 +1,6 @@
 
 import { useQuery } from '@tanstack/react-query';
-import { fetchProducts,fetchCategories,fetchCategoryData,fetchProductById } from '../api/product';
+import { fetchProducts,fetchCategories,fetchCategoryData,fetchProductById,searchInputValue } from '../api/product';
 
 export const useProducts = () => {
   return useQuery({
@@ -35,6 +35,15 @@ export const useCategoryData = (category) => {
     queryFn: () => fetchCategoryData(category),
     enabled: category.length > 0, 
     staleTime: 1000 * 60 * 5, // 5 dakika boyunca veriyi taze tut
+  });
+};
+
+export const useSearch = (value) => {
+  return useQuery({
+    queryKey: ['search',value],
+    queryFn: () => searchInputValue(value),
+    enabled: value?.trim().length > 1, // Sadece 2 karakterden fazla arama yapıldığında sorguyu çalıştır
+    staleTime: 1000 * 60 * 5,     
   });
 };
 

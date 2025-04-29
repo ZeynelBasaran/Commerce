@@ -24,7 +24,7 @@ function ProductDetailPage() {
   if (isLoading) return <Loading display={"bg-white md:py-16 dark:bg-gray-900 antialiased"}/>;
 
   return data && (
-    <section className="flex flex-grow flex-col py-8 bg-white md:py-16 dark:bg-gray-900 antialiased ">
+    <section className="flex-grow py-8 bg-white md:py-16 dark:bg-gray-900 antialiased ">
       <div className="container px-4 mx-auto 2xl:px-0 ">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
           <Slide>

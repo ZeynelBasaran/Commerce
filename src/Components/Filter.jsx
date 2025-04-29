@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { ContextPage } from '../ContextApi/ContextPage';
-import { useCategory, useCategoryData } from "../Services/ApiService";
+import { useCategory } from "../Services/ApiService";
 import Loading from './Loading';
 
 
@@ -9,9 +9,12 @@ import Loading from './Loading';
 
 
 function Filter() {
-  const { setFilter, isVisible, setIsVisible } = useContext(ContextPage);
+  const { setFilter, setSortOrder } = useContext(ContextPage);
+  const [isVisible, setIsVisible] = useState(true);
   const { data, isLoading } = useCategory();
-  const [selected, setSelected] = useState([]);
+  const [selected,setSelected] = useState([]);
+
+  console.log(selected)
 
   const handleChange = (e) => {
     const category = e.target.value;
@@ -28,7 +31,7 @@ function Filter() {
 
 
 
-  if (isLoading) return <Loading display={"col-span-6 md:col-span-3 w-full flex flex-col"}/>
+  if (isLoading) return <Loading display={"col-span-6 md:col-span-3 w-full flex flex-col"} />
 
   return (
 
@@ -36,7 +39,7 @@ function Filter() {
       <div className='flex justify-center items-center my-4'>
         <button
           className="cursor-pointer text-sm  rounded-lg text-white bg-pink-700  font-medium hover:bg-pink-800 focus:outline-none focus:ring-4 focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 flex items-center py-2 px-10"
-          type="button" onClick={() => { isVisible === "hidden" ? setIsVisible("") : setIsVisible("hidden") }}>
+          type="button" onClick={() => setIsVisible(prev => !prev)}>
           Filtrele
           <svg className="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +48,7 @@ function Filter() {
         </button>
       </div>
 
-      <div className={`${isVisible} bg-white rounded-lg shadow dark:bg-gray-700 transition-all duration-500 w-full p-4 `}>
+      <div className={`${isVisible ? '' : 'hidden'} bg-white rounded-lg shadow dark:bg-gray-700 transition-all duration-500 w-full p-4 `}>
         <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">
           Kategoriler
         </h6>
@@ -70,21 +73,19 @@ function Filter() {
 
           )}
 
-
-
-
-
-
-
         </ul>
         <div className='flex flex-row md:flex-col md:gap-y-4 justify-between lg:flex-row lg:justify-between mt-10 '>
 
           <button type='button' className='cursor-pointer text-sm rounded-lg text-white bg-pink-700 font-medium hover:bg-pink-800 focus:outline-none focus:ring-4 focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 px-4 py-2' onClick={(e) => {
             e.preventDefault(); // Olası bir form submitini engeller
             setFilter(selected);
+            setSortOrder("sırala");
+           
           }}>Filtrele</button>
 
-          <button className='cursor-pointer text-sm rounded-lg text-white bg-pink-700 font-medium hover:bg-pink-800 focus:outline-none focus:ring-4 focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 px-4 py-2' onClick={() => { setSelected([]) }}>Temizle</button>
+          <button className='cursor-pointer text-sm rounded-lg text-white bg-pink-700 font-medium hover:bg-pink-800 focus:outline-none focus:ring-4 focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 px-4 py-2' onClick={() => { setSelected([]);
+             setFilter([]);
+             setSortOrder("sırala"); }}>Temizle</button>
 
         </div>
       </div>
